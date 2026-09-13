@@ -1,0 +1,46 @@
+<main class="page-shell">
+  <header class="page-heading"><div><p class="eyebrow">APRENDE DE CADA INTENTO</p><h1>Revisión de errores</h1><p class="muted">Retoma lo que fallaste, con el contexto de cada sesión.</p></div>
+    <button type="button" class="primary" (click)="open('all')">Todos los errores</button>
+  </header>
+  <section class="filters" aria-label="Filtrar intentos">
+    <label>Tipo de sesión<select [ngModel]="filters().mode" (ngModelChange)="setFilter('mode', $event)"><option value="all">Todas las sesiones</option><option value="practice">Prácticas</option><option value="exam">Exámenes</option></select></label>
+    <label>Examen de origen<select [ngModel]="filters().examId" (ngModelChange)="setFilter('examId', $event)"><option value="">Todos los exámenes</option>@for (exam of examOptions; track exam.id) { <option [value]="exam.id">{{ exam.label }}</option> }</select></label>
+    <label>Servicio de la práctica<select [ngModel]="filters().serviceId" (ngModelChange)="setFilter('serviceId', $event)"><option value="">Todos los servicios</option>@for (service of serviceOptions(); track service.id) { <option [value]="service.id">{{ service.label }}</option> }</select></label>
+  </section>
+  @if (!selectedId()) {
+    <p class="muted" role="status">{{ attempts().length }} intentos · últimos 20 guardados en este dispositivo</p>
+    <section class="attempt-list" aria-label="Historial de intentos">
+      @for (attempt of attempts(); track attempt.resultId) {
+        <article class="attempt-card" [attr.data-result-id]="attempt.resultId">
+          <div><span class="badge">{{ attempt.mode === 'exam' ? 'Examen' : 'Práctica' }}</span><h2>{{ label(attempt) }}</h2><time [attr.datetime]="attempt.completedAt">{{ attempt.completedAt | date:'dd/MM/yyyy · HH:mm' }}</time></div>
+          <dl><div><dt>Puntuación</dt><dd>{{ attempt.score }}/{{ attempt.total }} <small>({{ attempt.total ? attempt.score / attempt.total * 100 : 0 | number:'1.0-0' }}%)</small></dd></div><div><dt>Errores</dt><dd>{{ attempt.incorrectQuestionIds.length }}</dd></div><div><dt>Sin responder</dt><dd>{{ attempt.unansweredQuestionIds.length }}</dd></div><div><dt>Tiempo utilizado</dt><dd>{{ formatDuration(attempt.durationSeconds) }}</dd></div></dl>
+          <button class="secondary" type="button" (click)="open(attempt.resultId)" [attr.aria-label]="'Revisar errores de ' + label(attempt) + ', ' + (attempt.completedAt | date:'dd/MM/yyyy HH:mm')">Revisar errores <span aria-hidden="true">→</span></button>
+        </article>
+      } @empty { <p class="empty">No hay intentos para estos filtros. Las sesiones completadas aparecerán aquí.</p> }
+    </section>
+  } @else {
+    <div class="review-toolbar"><button type="button" class="text-button" (click)="open('')">← Volver a los intentos</button><label class="checkbox-label"><input type="checkbox" [ngModel]="includeUnanswered()" (ngModelChange)="includeUnanswered.set($event)" /> Incluir sin responder</label></div>
+    @if (selectedId() === 'all') { <h2>Todos los errores</h2><p class="muted">Se aplican los filtros de sesiones. Cada respuesta conserva su intento de origen.</p> }
+    <p role="status" class="muted">{{ errorCount() }} preguntas para revisar</p>
+    @for (group of groups(); track group.result.resultId) {
+      <section class="attempt-review" [attr.data-result-id]="group.result.resultId">
+        <header><span class="badge">{{ group.result.mode === 'exam' ? 'Examen' : 'Práctica' }}</span><h2>{{ label(group.result) }}</h2><p class="muted">{{ group.result.completedAt | date:'dd/MM/yyyy · HH:mm' }} · {{ group.result.score }}/{{ group.result.total }} · {{ formatDuration(group.result.durationSeconds) }}</p></header>
+        @for (item of group.items; track item.questionId; let index = $index) {
+          <article class="review-item" [attr.data-question-id]="item.questionId">
+            <p class="status" [class.unanswered]="item.classification === 'unanswered'">{{ index + 1 }} · {{ item.classification === 'incorrect' ? '✕ Incorrecta' : '— Sin responder' }}</p>
+            @if (questionMap().get(item.questionId); as question) {
+              <p class="muted">{{ question.exam_domain }}</p>
+              <div class="review-services">@for (service of reviewServices(question); track service.id) { <span><app-aws-service-icon [iconKey]="service.icon_key" [alt]="service.name" [size]="24" />{{ service.short_name }}</span> }</div>
+              <h3 class="scenario">{{ question.generated_question?.scenario || question.source_question?.scenario }}</h3>
+              <section class="answer"><h4>Tu respuesta</h4><p>{{ answerText(question, item.selectedAnswerIds) || 'Sin responder' }}</p></section>
+              <section class="answer correct-answer"><h4>Respuesta correcta</h4><p>{{ answerText(question, question.generated_correct_answers || question.source_correct_answers || []) }}</p></section>
+              @if (question.feedback; as feedback) { <section class="answer"><h4>Explicación</h4><p>{{ feedback.summary }}</p><p>{{ feedback.incorrect_options }}</p><p><strong>Pista:</strong> {{ feedback.key_clue }}</p></section> }
+              <div class="references">@for (reference of question.references || []; track reference; let n = $index) { <a [href]="reference" target="_blank" rel="noopener noreferrer">Referencia AWS {{ n + 1 }} ↗</a> }</div>
+            } @else { <p>Pregunta {{ item.questionId }}. El enunciado no está disponible en el banco actual.</p><p>Tu respuesta: {{ item.selectedAnswerIds.join(', ') || 'Sin responder' }}</p> }
+          </article>
+        } @empty { <p class="empty">Este intento no tiene errores para revisar con la selección actual.</p> }
+      </section>
+    } @empty { <p class="empty">No se encontró este intento en el historial local.</p> }
+  }
+  <a class="text-button new-practice" routerLink="/practice">Nueva práctica →</a>
+</main>

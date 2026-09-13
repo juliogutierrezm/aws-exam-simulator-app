@@ -1,0 +1,18 @@
+<p-dialog [visible]="!!actions.request()" (visibleChange)="!$event && actions.choose('cancel')"
+  [header]="actions.request()?.title" [modal]="true" [draggable]="false" [resizable]="false"
+  [closable]="true" closeAriaLabel="Cancelar" [closeOnEscape]="true" [dismissableMask]="false" [blockScroll]="true"
+  [style]="{ width: '36rem', maxWidth: 'calc(100vw - 2rem)' }" [breakpoints]="{ '640px': 'calc(100vw - 2rem)' }"
+  (onHide)="actions.restoreFocus()">
+  <p class="dialog-description">{{ actions.request()?.message }}</p>
+  <ng-template #footer>
+    <div class="dialog-actions">
+      @for (action of actions.request()?.actions ?? []; track action.id) {
+        <button pButton type="button" [attr.data-action]="action.id"
+          class="decision" [class]="action.style"
+          [severity]="action.style === 'danger' || action.style === 'danger-outline' ? 'danger' : 'secondary'"
+          [outlined]="action.style === 'danger-outline'" [text]="action.style === 'quiet'"
+          (click)="actions.choose(action.id)">{{ action.label }}</button>
+      }
+    </div>
+  </ng-template>
+</p-dialog>

@@ -1,0 +1,322 @@
+{
+  "amazon-ec2": {
+    "file": "Compute/Amazon-EC2.svg",
+    "name": "Amazon EC2",
+    "source": "manual"
+  },
+  "amazon-s3": {
+    "file": "Storage/Amazon-Simple-Storage-Service.svg",
+    "name": "Amazon S3",
+    "source": "manual"
+  },
+  "amazon-vpc": {
+    "file": "Networking-Content-Delivery/Amazon-Virtual-Private-Cloud.svg",
+    "name": "Amazon VPC",
+    "source": "manual"
+  },
+  "elastic-load-balancing": {
+    "file": "Networking-Content-Delivery/Elastic-Load-Balancing.svg",
+    "name": "Elastic Load Balancing",
+    "source": "manual"
+  },
+  "aws-lambda": {
+    "file": "Compute/AWS-Lambda.svg",
+    "name": "AWS Lambda",
+    "source": "manual"
+  },
+  "amazon-rds": {
+    "file": "Databases/Amazon-RDS.svg",
+    "name": "Amazon RDS",
+    "source": "manual"
+  },
+  "amazon-ec2-auto-scaling": {
+    "file": "Compute/Amazon-EC2-Auto-Scaling.svg",
+    "name": "Amazon EC2 Auto Scaling",
+    "source": "manual"
+  },
+  "amazon-dynamodb": {
+    "file": "Databases/Amazon-DynamoDB.svg",
+    "name": "Amazon DynamoDB",
+    "source": "manual"
+  },
+  "amazon-ebs": {
+    "file": "Storage/Amazon-Elastic-Block-Store.svg",
+    "name": "Amazon EBS",
+    "source": "manual"
+  },
+  "aws-iam": {
+    "file": "Security-Identity/AWS-Identity-and-Access-Management.svg",
+    "name": "AWS IAM",
+    "source": "manual"
+  },
+  "amazon-sqs": {
+    "file": "Application-Integration/Amazon-Simple-Queue-Service.svg",
+    "name": "Amazon SQS",
+    "source": "manual"
+  },
+  "amazon-cloudfront": {
+    "file": "Networking-Content-Delivery/Amazon-CloudFront.svg",
+    "name": "Amazon CloudFront",
+    "source": "manual"
+  },
+  "amazon-kinesis": {
+    "file": "Analytics/Amazon-Kinesis.svg",
+    "name": "Amazon Kinesis Data Streams",
+    "source": "manual"
+  },
+  "amazon-efs": {
+    "file": "Storage/Amazon-EFS.svg",
+    "name": "Amazon EFS",
+    "source": "manual"
+  },
+  "amazon-sns": {
+    "file": "Application-Integration/Amazon-Simple-Notification-Service.svg",
+    "name": "Amazon SNS",
+    "source": "manual"
+  },
+  "amazon-route-53": {
+    "file": "Networking-Content-Delivery/Amazon-Route-53.svg",
+    "name": "Amazon Route 53",
+    "source": "manual"
+  },
+  "amazon-aurora": {
+    "file": "Databases/Amazon-Aurora.svg",
+    "name": "Amazon Aurora",
+    "source": "manual"
+  },
+  "amazon-elasticache": {
+    "file": "Databases/Amazon-ElastiCache.svg",
+    "name": "Amazon ElastiCache",
+    "source": "manual"
+  },
+  "aws-direct-connect": {
+    "file": "Networking-Content-Delivery/AWS-Direct-Connect.svg",
+    "name": "AWS Direct Connect",
+    "source": "manual"
+  },
+  "aws-storage-gateway": {
+    "file": "Storage/AWS-Storage-Gateway.svg",
+    "name": "AWS Storage Gateway",
+    "source": "manual"
+  },
+  "amazon-cloudwatch": {
+    "file": "Management-Tools/Amazon-CloudWatch.svg",
+    "name": "Amazon CloudWatch",
+    "source": "manual"
+  },
+  "amazon-redshift": {
+    "file": "Analytics/Amazon-Redshift.svg",
+    "name": "Amazon Redshift",
+    "source": "manual"
+  },
+  "aws-kms": {
+    "file": "Security-Identity/AWS-Key-Management-Service.svg",
+    "name": "AWS KMS",
+    "source": "manual"
+  },
+  "aws-global-accelerator": {
+    "file": "Networking-Content-Delivery/AWS-Global-Accelerator.svg",
+    "name": "AWS Global Accelerator",
+    "source": "manual"
+  },
+  "aws-snow-family": {
+    "file": "Storage/AWS-Snowball.svg",
+    "name": "AWS Snow Family",
+    "source": "manual"
+  },
+  "amazon-athena": {
+    "file": "Analytics/Amazon-Athena.svg",
+    "name": "Amazon Athena",
+    "source": "manual"
+  },
+  "aws-glue": {
+    "file": "Analytics/AWS-Glue.svg",
+    "name": "AWS Glue",
+    "source": "manual"
+  },
+  "amazon-api-gateway": {
+    "file": "Networking-Content-Delivery/Amazon-API-Gateway.svg",
+    "name": "Amazon API Gateway",
+    "source": "manual"
+  },
+  "amazon-ecs": {
+    "file": "Containers/Amazon-Elastic-Container-Service.svg",
+    "name": "Amazon ECS",
+    "source": "manual"
+  },
+  "amazon-emr": {
+    "file": "Analytics/Amazon-EMR.svg",
+    "name": "Amazon EMR",
+    "source": "manual"
+  },
+  "aws-datasync": {
+    "file": "Migration-Modernization/AWS-DataSync.svg",
+    "name": "AWS DataSync",
+    "source": "manual"
+  },
+  "aws-organizations": {
+    "file": "Management-Tools/AWS-Organizations.svg",
+    "name": "AWS Organizations",
+    "source": "manual"
+  },
+  "aws-waf": {
+    "file": "Security-Identity/AWS-WAF.svg",
+    "name": "AWS WAF",
+    "source": "manual"
+  },
+  "amazon-fsx": {
+    "file": "Storage/Amazon-FSx.svg",
+    "name": "Amazon FSx for Lustre",
+    "source": "manual"
+  },
+  "amazon-cloudtrail": {
+    "file": "Management-Tools/AWS-CloudTrail.svg",
+    "name": "Amazon CloudTrail",
+    "source": "manual"
+  },
+  "amazon-eventbridge": {
+    "file": "Application-Integration/Amazon-EventBridge.svg",
+    "name": "Amazon EventBridge",
+    "source": "manual"
+  },
+  "aws-config": {
+    "file": "Management-Tools/AWS-Config.svg",
+    "name": "AWS Config",
+    "source": "manual"
+  },
+  "aws-fargate": {
+    "file": "Containers/AWS-Fargate.svg",
+    "name": "AWS Fargate",
+    "source": "manual"
+  },
+  "amazon-guardduty": {
+    "file": "Security-Identity/Amazon-GuardDuty.svg",
+    "name": "Amazon GuardDuty",
+    "source": "manual"
+  },
+  "aws-cloudformation": {
+    "file": "Management-Tools/AWS-CloudFormation.svg",
+    "name": "AWS CloudFormation",
+    "source": "manual"
+  },
+  "aws-shield": {
+    "file": "Security-Identity/AWS-Shield.svg",
+    "name": "AWS Shield",
+    "source": "manual"
+  },
+  "aws-systems-manager": {
+    "file": "Management-Tools/AWS-Systems-Manager.svg",
+    "name": "AWS Systems Manager",
+    "source": "manual"
+  },
+  "aws-trusted-advisor": {
+    "file": "Management-Tools/AWS-Trusted-Advisor.svg",
+    "name": "AWS Trusted Advisor",
+    "source": "manual"
+  },
+  "amazon-neptune": {
+    "file": "Databases/Amazon-Neptune.svg",
+    "name": "Amazon Neptune",
+    "source": "manual"
+  },
+  "aws-database-migration-service": {
+    "file": "Databases/AWS-Database-Migration-Service.svg",
+    "name": "AWS Database Migration Service",
+    "source": "manual"
+  },
+  "amazon-documentdb": {
+    "file": "Databases/Amazon-DocumentDB.svg",
+    "name": "Amazon DocumentDB",
+    "source": "manual"
+  },
+  "aws-control-tower": {
+    "file": "Management-Tools/AWS-Control-Tower.svg",
+    "name": "AWS Control Tower",
+    "source": "manual"
+  },
+  "amazon-cognito": {
+    "file": "Security-Identity/Amazon-Cognito.svg",
+    "name": "Amazon Cognito",
+    "source": "manual"
+  },
+  "aws-cost-explorer": {
+    "file": "Cloud-Financial-Management/AWS-Cost-Explorer.svg",
+    "name": "AWS Cost Explorer",
+    "source": "manual"
+  },
+  "aws-directory-service": {
+    "file": "Security-Identity/AWS-Directory-Service.svg",
+    "name": "AWS Managed Microsoft AD",
+    "source": "manual"
+  },
+  "aws-resource-access-manager": {
+    "file": "Security-Identity/AWS-Resource-Access-Manager.svg",
+    "name": "AWS Resource Access Manager",
+    "source": "manual"
+  },
+  "aws-secrets-manager": {
+    "file": "Security-Identity/AWS-Secrets-Manager.svg",
+    "name": "AWS Secrets Manager",
+    "source": "manual"
+  },
+  "aws-step-functions": {
+    "file": "Application-Integration/AWS-Step-Functions.svg",
+    "name": "AWS Step Functions",
+    "source": "manual"
+  },
+  "aws-backup": {
+    "file": "Storage/AWS-Backup.svg",
+    "name": "AWS Backup",
+    "source": "manual"
+  },
+  "aws-budgets": {
+    "file": "Cloud-Financial-Management/AWS-Budgets.svg",
+    "name": "AWS Budgets",
+    "source": "manual"
+  },
+  "aws-certificate-manager": {
+    "file": "Security-Identity/AWS-Certificate-Manager.svg",
+    "name": "AWS Certificate Manager",
+    "source": "manual"
+  },
+  "amazon-inspector": {
+    "file": "Security-Identity/Amazon-Inspector.svg",
+    "name": "Amazon Inspector",
+    "source": "manual"
+  },
+  "amazon-mq": {
+    "file": "Application-Integration/Amazon-MQ.svg",
+    "name": "Amazon MQ",
+    "source": "manual"
+  },
+  "amazon-macie": {
+    "file": "Security-Identity/Amazon-Macie.svg",
+    "name": "Amazon Macie",
+    "source": "manual"
+  },
+  "aws-application-migration-service": {
+    "file": "Migration-Modernization/AWS-Application-Migration-Service.svg",
+    "name": "AWS Application Migration Service",
+    "source": "manual"
+  },
+  "aws-cost-and-usage-report": {
+    "file": "Cloud-Financial-Management/AWS-Cost-and-Usage-Report.svg",
+    "name": "AWS Cost and Usage Report",
+    "source": "manual"
+  },
+  "aws-elastic-beanstalk": {
+    "file": "Compute/AWS-Elastic-Beanstalk.svg",
+    "name": "AWS Elastic Beanstalk",
+    "source": "manual"
+  },
+  "aws-lake-formation": {
+    "file": "Analytics/AWS-Lake-Formation.svg",
+    "name": "AWS Lake Formation",
+    "source": "manual"
+  },
+  "amazon-eks": {
+    "file": "Containers/Amazon-Elastic-Kubernetes-Service.svg",
+    "name": "Amazon EKS",
+    "source": "manual"
+  }
+}

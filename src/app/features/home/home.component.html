@@ -1,0 +1,44 @@
+<main class="home page-shell">
+  <section class="hero-block">
+    <div>
+      <p class="eyebrow">AWS CERTIFIED SOLUTIONS ARCHITECT - ASSOCIATE</p>
+      <h1>AWS SAA Practice</h1>
+      <p class="hero-copy">Practica con preguntas reales del banco y llega al examen con criterio, no solo memoria.</p>
+      <div class="actions">
+        <a class="button button-primary" routerLink="/practice">Comenzar práctica</a>
+        <a class="button button-secondary" routerLink="/exam">Simular examen</a>
+      </div>
+    </div>
+    <div class="hero-mark" aria-hidden="true"><span>SA</span><small>01</small></div>
+  </section>
+
+  <section class="stats-grid" aria-label="Resumen del banco de preguntas">
+    <article><strong>{{ questionCount() }}</strong><span>preguntas</span></article>
+    <article><strong>{{ examCount() }}</strong><span>exámenes</span></article>
+    <article><strong>{{ domains().length || 4 }}</strong><span>dominios</span></article>
+    <article><strong>{{ services().length }}</strong><span>servicios AWS</span></article>
+  </section>
+
+  @if (results.length) {
+    <section class="progress-strip">
+      <div><span class="eyebrow">TU PROGRESO</span><strong>{{ answered() }} preguntas respondidas</strong></div>
+      <div class="progress-stat"><strong>{{ accuracy() }}%</strong><span>precisión</span></div>
+      <a class="text-link" routerLink="/results">Ver resultados</a>
+    </section>
+  }
+
+  @if (activeSession()) { <section class="active-session" aria-label="Sesión activa"><div><p class="eyebrow">SESIÓN EN CURSO</p><strong>{{ activeSession()?.questionIds?.length }} preguntas · {{ activeSession()?.mode === 'exam' ? 'Exam' : 'Practice' }}</strong><p>Puedes continuar donde lo dejaste o descartar solo esta sesión.</p></div><div class="actions"><a class="button button-primary" [routerLink]="activeSession()?.mode === 'exam' ? '/exam/session' : '/practice/session'">Continuar sesión</a><button class="button button-secondary" type="button" (click)="resetActiveSession()">Resetear sesión activa</button></div></section> }
+
+  <section class="section-heading"><div><p class="eyebrow">EMPIEZA POR AQUÍ</p><h2>Elige tu siguiente sesión</h2></div></section>
+  <section class="path-grid">
+    <a class="path-card path-card-dark" routerLink="/practice"><span class="path-index">01</span><h3>Práctica rápida</h3><p>Configura una sesión breve y recibe feedback después de cada respuesta.</p><span class="arrow">↗</span></a>
+    <a class="path-card" routerLink="/exam"><span class="path-index">02</span><h3>Simulación completa</h3><p>65 preguntas, 130 minutos y una experiencia cercana al examen real.</p><span class="arrow">↗</span></a>
+  </section>
+
+  <section class="section-heading"><div><p class="eyebrow">CATÁLOGO AWS</p><h2>Practica por servicio</h2></div><a class="text-link" routerLink="/services">Ver todos</a></section>
+  <section class="service-grid">
+    @for (service of popularServices(); track service.id) {
+      <a class="service-card" [routerLink]="['/practice']" [queryParams]="{ service: service.id }"><app-aws-service-icon [iconKey]="service.icon_key" [alt]="service.name" [size]="32" /><strong>{{ service.short_name }}</strong><span>{{ service.question_count }} preguntas</span></a>
+    }
+  </section>
+</main>

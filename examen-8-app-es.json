@@ -1,0 +1,3787 @@
+[
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q001",
+    "exam_id": "saa-e08",
+    "bank_index": 456,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 1,
+    "topic": "AWS IAM - Cross-account access and least privilege",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company uses one AWS account to run production workloads. The company has a separate AWS account for its security team. During periodic audits, the security team needs to view specific account settings and resource configurations in the AWS account that runs production workloads. A solutions architect must provide the required access to the security team by designing a solution that follows AWS security best practices. Which solution will meet these requirements?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create a new IAM user in the production account. Assign administrative privileges to the user. Allow the security team to use this account to log in to the systems that need to be accessed."
+        },
+        {
+          "id": "B",
+          "text": "Create an IAM role in the production account. Attach a permissions policy that provides the permissions required by the security team. Add the security team account to the trust policy. Advise the security team to assume the new role."
+        },
+        {
+          "id": "C",
+          "text": "Create an IAM role in the security account. Attach a permissions policy that provides the permissions required by the security team. Add the security team account to the trust policy. Advise the security team to assume the new role."
+        },
+        {
+          "id": "D",
+          "text": "Create an IAM user for each security team member in the production account. Attach a permissions policy that provides the permissions required by the security team to a new IAM group. Assign the security team members to the group."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "B"
+    ],
+    "feedback": {
+      "summary": "The role must be created in the account that contains the resources and configured to trust the external account. A least-privilege permissions policy limits the security team's access to only the required audit operations.",
+      "incorrect_options": "Creating IAM users introduces long-term credentials, and granting administrative access violates least privilege. A role created only in the external account does not provide access to resources in the production account.",
+      "key_clue": "The security team needs secure, least-privilege access to resources located in another AWS account."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-users-federation-idp](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-users-federation-idp)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0001."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q002",
+    "exam_id": "saa-e08",
+    "bank_index": 457,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 1,
+    "topic": "AWS IAM - Cross-account access and least privilege",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A financial services company separates its cloud environments into multiple AWS accounts. Compliance analysts work from a governance account and must periodically inspect selected configurations in an account that hosts regulated applications. The company wants to grant temporary cross-account access without creating additional long-term credentials and must apply the principle of least privilege. Which solution should a solutions architect recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create individual IAM users for the compliance analysts in the regulated applications account and add the users to a group with read-only permissions."
+        },
+        {
+          "id": "B",
+          "text": "Create an IAM role in the governance account, grant the role access to resources in the regulated applications account, and configure the governance account as the trusted principal."
+        },
+        {
+          "id": "C",
+          "text": "Create an IAM role in the regulated applications account with only the required audit permissions. Configure its trust policy to allow the governance account to assume the role."
+        },
+        {
+          "id": "D",
+          "text": "Create one shared IAM user in the regulated applications account, attach the AdministratorAccess policy, and provide its credentials to the compliance team."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "C"
+    ],
+    "feedback": {
+      "summary": "The role must be created in the account that contains the resources and configured to trust the external account. A least-privilege permissions policy limits the security team's access to only the required audit operations.",
+      "incorrect_options": "Creating IAM users introduces long-term credentials, and granting administrative access violates least privilege. A role created only in the external account does not provide access to resources in the production account.",
+      "key_clue": "The security team needs secure, least-privilege access to resources located in another AWS account."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-users-federation-idp](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-users-federation-idp)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0001."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q003",
+    "exam_id": "saa-e08",
+    "bank_index": 458,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 2,
+    "topic": "High availability with Elastic Load Balancing and Amazon EC2 Auto Scaling",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A web application runs on two Amazon EC2 instances behind a Network Load Balancer. The EC2 instances are in a single Availability Zone. What should a solutions architect do to make this architecture more highly available?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Replace the Network Load Balancer with a Gateway Load Balancer that is configured with the EC2 instances in an Auto Scaling group."
+        },
+        {
+          "id": "B",
+          "text": "Place the EC2 instances in an Auto Scaling group that extends across multiple Availability Zones. Designate the Auto Scaling group as the target of the Network Load Balancer."
+        },
+        {
+          "id": "C",
+          "text": "Create a new VPC with two new EC2 instances in the same Availability Zone as the original EC2 instances. Create a VPC peering connection between the two VPCs."
+        },
+        {
+          "id": "D",
+          "text": "Configure Amazon Route 53 to perform health checks on the EC2 instances behind the Network Load Balancer. Add a failover routing policy."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "B"
+    ],
+    "feedback": {
+      "summary": "An Auto Scaling group distributed across multiple Availability Zones removes the single-AZ failure point and can replace unhealthy instances while the Network Load Balancer distributes traffic.",
+      "incorrect_options": "Adding instances only within the same Availability Zone does not protect against an Availability Zone failure. Route 53 failover requires a secondary destination, and Gateway Load Balancer is intended for virtual network appliances rather than ordinary web traffic.",
+      "key_clue": "All EC2 instances are currently located in a single Availability Zone."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html)",
+      "[https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html)",
+      "[https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html)",
+      "[https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring.html](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0002."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q004",
+    "exam_id": "saa-e08",
+    "bank_index": 459,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 2,
+    "topic": "High availability with Elastic Load Balancing and Amazon EC2 Auto Scaling",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "An online ticketing platform processes client connections through a Network Load Balancer. All application servers currently run as Amazon EC2 instances in one Availability Zone. The platform must remain available if that Availability Zone experiences an outage and should automatically replace unhealthy instances. Which architecture meets these requirements?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Deploy additional EC2 instances in a separate VPC but in the same Availability Zone, and connect the VPCs by using a transit gateway."
+        },
+        {
+          "id": "B",
+          "text": "Use Route 53 health checks for the Network Load Balancer and configure failover routing without deploying a secondary application environment."
+        },
+        {
+          "id": "C",
+          "text": "Register the existing EC2 instances behind a Gateway Load Balancer and configure it to distribute incoming client requests."
+        },
+        {
+          "id": "D",
+          "text": "Create an Auto Scaling group that spans at least two Availability Zones, attach the group to the Network Load Balancer target group, and configure health checks."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "An Auto Scaling group distributed across multiple Availability Zones removes the single-AZ failure point and can replace unhealthy instances while the Network Load Balancer distributes traffic.",
+      "incorrect_options": "Adding instances only within the same Availability Zone does not protect against an Availability Zone failure. Route 53 failover requires a secondary destination, and Gateway Load Balancer is intended for virtual network appliances rather than ordinary web traffic.",
+      "key_clue": "All EC2 instances are currently located in a single Availability Zone."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html)",
+      "[https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html)",
+      "[https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html)",
+      "[https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring.html](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-configuring.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0002."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q005",
+    "exam_id": "saa-e08",
+    "bank_index": 460,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 3,
+    "topic": "Disaster recovery strategies - Pilot light",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company asks a solutions architect to implement a pilot light disaster recovery (DR) strategy for an existing on-premises application. The application is self-contained and does not need to access any databases. Which solution will implement a pilot light DR strategy?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Recreate the application hosting environment on AWS by using Amazon EC2 instances and stop the EC2 instances. When the on-premises application fails, start the stopped EC2 instances and direct 100% of application traffic to the EC2 instances that are running in the AWS Cloud."
+        },
+        {
+          "id": "B",
+          "text": "Back up the on-premises application, configuration, and data to an Amazon S3 bucket. When the on-premises application fails, rebuild the on-premises hosting environment and restore the application from the information that is stored in the S3 bucket."
+        },
+        {
+          "id": "C",
+          "text": "Back up the on-premises application, configuration, and data to an Amazon S3 bucket. When the on-premises application fails, build a new hosting environment on AWS and restore the application from the information that is stored in the S3 bucket."
+        },
+        {
+          "id": "D",
+          "text": "Recreate the application hosting environment on AWS by using Amazon EC2 instances. Direct 10% of application traffic to the EC2 instances that are running in the AWS Cloud. When the on-premises application fails, direct 100% of application traffic to the EC2 instances that are running in the AWS Cloud."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "A pilot light strategy keeps the essential recovery environment prepared while most compute resources remain stopped until testing or failover is required, reducing ongoing costs.",
+      "incorrect_options": "Creating infrastructure only after a failure is backup and restore. Continuously running a reduced-capacity environment is warm standby, while an active fully scaled environment represents a multi-site active-active strategy.",
+      "key_clue": "The infrastructure must already exist in AWS, but most resources should remain inactive until disaster recovery is needed."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html](https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0003."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q006",
+    "exam_id": "saa-e08",
+    "bank_index": 461,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 3,
+    "topic": "Disaster recovery strategies - Pilot light",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A media company operates a standalone content-processing application in its own data center. The application has no external database dependencies. The company wants a disaster recovery environment in AWS that keeps the required infrastructure prepared but incurs minimal ongoing compute costs. Recovery should take tens of minutes rather than the hours required to build the environment from backups. Which solution represents a pilot light strategy?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Store backups of the application in Amazon S3 and create all AWS networking and compute resources only after the data center becomes unavailable."
+        },
+        {
+          "id": "B",
+          "text": "Run a reduced-capacity copy of the application continuously on EC2 instances and send a small percentage of production traffic to it."
+        },
+        {
+          "id": "C",
+          "text": "Provision the application environment on EC2 instances in AWS, keep the instances stopped during normal operation, and start them and redirect all traffic to AWS during a disaster."
+        },
+        {
+          "id": "D",
+          "text": "Run a fully scaled copy of the application in AWS and distribute production traffic equally between the on-premises and AWS environments."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "C"
+    ],
+    "feedback": {
+      "summary": "A pilot light strategy keeps the essential recovery environment prepared while most compute resources remain stopped until testing or failover is required, reducing ongoing costs.",
+      "incorrect_options": "Creating infrastructure only after a failure is backup and restore. Continuously running a reduced-capacity environment is warm standby, while an active fully scaled environment represents a multi-site active-active strategy.",
+      "key_clue": "The infrastructure must already exist in AWS, but most resources should remain inactive until disaster recovery is needed."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html](https://docs.aws.amazon.com/whitepapers/latest/disaster-recovery-workloads-on-aws/disaster-recovery-options-in-the-cloud.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0003."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q007",
+    "exam_id": "saa-e08",
+    "bank_index": 462,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 4,
+    "topic": "Data preparation and sensitive data masking with AWS Glue DataBrew",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company uses Amazon RDS instances to process customer information. A solutions architect must create a weekly export of data to create sample data for the development environment. When the data is retrieved, all customer names and personal identifiers should be either removed or replaced with random data. The company wants to reduce the amount of custom code that is developed to manage the solution in the long term. Which solution will meet these requirements with the least operational overhead?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create an AWS Glue DataBrew project and connect the project to Amazon RDS. Use existing recipes to replace the sensitive data. Export the clean data to Amazon S3 for use in the development environment."
+        },
+        {
+          "id": "B",
+          "text": "Select Amazon S3 as the source of the data. Use Amazon Textract to analyze exported RDS data for personal identifiers, remove the discovered data, and replace the discovered data with random data. Export the clean data to Amazon S3 for use in the development environment."
+        },
+        {
+          "id": "C",
+          "text": "Export the data to Amazon S3. Use Amazon Athena to create a job that uses regular expressions to search for and replace personal identifiers. Export the clean data to Amazon S3 for use in the development environment."
+        },
+        {
+          "id": "D",
+          "text": "Create an Amazon Macie job to discover sensitive data from RDS exports by using built-in data identifiers. Use the Macie job to mask the discovered data. Export the clean data to Amazon S3 for use in the development environment."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "AWS Glue DataBrew provides visual, code-free data preparation and reusable recipes that can remove, mask, or replace sensitive values before writing the sanitized dataset to Amazon S3.",
+      "incorrect_options": "Amazon Textract extracts information from documents but does not sanitize datasets. Athena would require custom SQL transformations, and Amazon Macie discovers sensitive data in Amazon S3 but does not directly sanitize Amazon RDS records.",
+      "key_clue": "The company needs recurring data sanitization with predefined transformations and minimal custom code."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/databrew/latest/dg/what-is.html](https://docs.aws.amazon.com/databrew/latest/dg/what-is.html)",
+      "[https://docs.aws.amazon.com/textract/latest/dg/what-is.html](https://docs.aws.amazon.com/textract/latest/dg/what-is.html)",
+      "[https://docs.aws.amazon.com/athena/latest/ug/what-is.html](https://docs.aws.amazon.com/athena/latest/ug/what-is.html)",
+      "[https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html](https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0004."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q008",
+    "exam_id": "saa-e08",
+    "bank_index": 463,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 4,
+    "topic": "Data preparation and sensitive data masking with AWS Glue DataBrew",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A healthcare company stores patient registration records in an Amazon RDS database. Every week, the testing team needs a sanitized copy of the records in Amazon S3. Names, identification numbers, and other confidential fields must be deleted or replaced with synthetic values. The company prefers a visual, managed solution with predefined transformations to minimize code maintenance. Which solution should a solutions architect recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Export the database records to Amazon S3 and use Amazon Textract to detect and replace confidential values in the exported files."
+        },
+        {
+          "id": "B",
+          "text": "Connect an AWS Glue DataBrew project to Amazon RDS, apply a recipe that masks or replaces the confidential fields, and write the transformed dataset to Amazon S3."
+        },
+        {
+          "id": "C",
+          "text": "Export the records to Amazon S3 and create Amazon Athena SQL queries with regular expressions to locate and replace each confidential value."
+        },
+        {
+          "id": "D",
+          "text": "Configure Amazon Macie to read the records directly from Amazon RDS and automatically mask every sensitive field before exporting the records to Amazon S3."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "B"
+    ],
+    "feedback": {
+      "summary": "AWS Glue DataBrew provides visual, code-free data preparation and reusable recipes that can remove, mask, or replace sensitive values before writing the sanitized dataset to Amazon S3.",
+      "incorrect_options": "Amazon Textract extracts information from documents but does not sanitize datasets. Athena would require custom SQL transformations, and Amazon Macie discovers sensitive data in Amazon S3 but does not directly sanitize Amazon RDS records.",
+      "key_clue": "The company needs recurring data sanitization with predefined transformations and minimal custom code."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/databrew/latest/dg/what-is.html](https://docs.aws.amazon.com/databrew/latest/dg/what-is.html)",
+      "[https://docs.aws.amazon.com/textract/latest/dg/what-is.html](https://docs.aws.amazon.com/textract/latest/dg/what-is.html)",
+      "[https://docs.aws.amazon.com/athena/latest/ug/what-is.html](https://docs.aws.amazon.com/athena/latest/ug/what-is.html)",
+      "[https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html](https://docs.aws.amazon.com/macie/latest/user/what-is-macie.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0004."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q009",
+    "exam_id": "saa-e08",
+    "bank_index": 464,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 5,
+    "topic": "Amazon S3 storage classes and lifecycle management",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company needs to maintain data records for a minimum of 5 years. The data is rarely accessed after it is stored. The data must be accessible within 2 hours. Which solution will meet these requirements most cost-effectively?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Store the data in an Amazon S3 bucket. Use an S3 Lifecycle policy to move the data to S3 Glacier Instant Retrieval."
+        },
+        {
+          "id": "B",
+          "text": "Store the data in an Amazon Elastic File System (Amazon EFS) file system. Access the data by using AWS Direct Connect."
+        },
+        {
+          "id": "C",
+          "text": "Store the data in an Amazon Elastic Block Store (Amazon EBS) volume. Create snapshots. Store the snapshots in an Amazon S3 bucket."
+        },
+        {
+          "id": "D",
+          "text": "Store the data in an Amazon S3 bucket. Use an S3 Lifecycle policy to move the data to S3 Standard-Infrequent Access (S3 Standard-IA)."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "S3 Glacier Instant Retrieval is designed for rarely accessed archival data that still requires immediate retrieval. An S3 Lifecycle rule can transition the records automatically and reduce long-term storage costs.",
+      "incorrect_options": "Amazon EFS and Amazon EBS add unnecessary file-system or block-storage costs. S3 Standard-IA provides rapid access but is generally more expensive than an archival storage class for data that is rarely retrieved.",
+      "key_clue": "The records are rarely accessed, must be retained for years, and must remain retrievable within 2 hours."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html)",
+      "[https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)",
+      "[https://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-helper-direct.html](https://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-helper-direct.html)",
+      "[https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0005."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q010",
+    "exam_id": "saa-e08",
+    "bank_index": 465,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 5,
+    "topic": "Amazon S3 storage classes and lifecycle management",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A legal firm must retain closed case documents for at least 5 years. After a case is closed, the documents are almost never requested, but the firm requires them to be available in less than 2 hours whenever an authorized employee needs them. The documents do not require file-system or block-storage access. Which solution satisfies these requirements at the lowest cost?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Store the documents on Amazon EBS volumes and periodically create EBS snapshots for long-term retention."
+        },
+        {
+          "id": "B",
+          "text": "Store the documents in Amazon S3 and configure an S3 Lifecycle rule to transition them to S3 Standard-IA."
+        },
+        {
+          "id": "C",
+          "text": "Store the documents in Amazon EFS and use an AWS Direct Connect connection when employees need to retrieve them."
+        },
+        {
+          "id": "D",
+          "text": "Store the documents in Amazon S3 and configure an S3 Lifecycle rule to transition them to S3 Glacier Instant Retrieval."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "S3 Glacier Instant Retrieval is designed for rarely accessed archival data that still requires immediate retrieval. An S3 Lifecycle rule can transition the records automatically and reduce long-term storage costs.",
+      "incorrect_options": "Amazon EFS and Amazon EBS add unnecessary file-system or block-storage costs. S3 Standard-IA provides rapid access but is generally more expensive than an archival storage class for data that is rarely retrieved.",
+      "key_clue": "The records are rarely accessed, must be retained for years, and must remain retrievable within 2 hours."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html)",
+      "[https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)",
+      "[https://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-helper-direct.html](https://docs.aws.amazon.com/efs/latest/ug/mounting-fs-mount-helper-direct.html)",
+      "[https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-snapshots.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0005."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q011",
+    "exam_id": "saa-e08",
+    "bank_index": 466,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 6,
+    "topic": "Elastic Load Balancing connection draining and deregistration delay",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A reporting application runs on Amazon EC2 instances behind an Application Load Balancer. The instances run in an Amazon EC2 Auto Scaling group across multiple Availability Zones. For complex reports, the application can take up to 15 minutes to respond to a request. A solutions architect is concerned that users will receive HTTP 5xx errors if a report request is in progress during a scale-in event. What should the solutions architect do to ensure that user requests will be completed before instances are terminated?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Enable sticky sessions (session affinity) for the target group of the instances."
+        },
+        {
+          "id": "B",
+          "text": "Increase the deregistration delay timeout for the target group of the instances to greater than 900 seconds."
+        },
+        {
+          "id": "C",
+          "text": "Increase the cooldown period for the Auto Scaling group to a greater amount of time than the time required for the longest running responses."
+        },
+        {
+          "id": "D",
+          "text": "Increase the instance size in the Application Load Balancer target group."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "B"
+    ],
+    "feedback": {
+      "summary": "The deregistration delay allows a draining target to complete active requests before it is deregistered and terminated. The timeout must exceed the maximum request duration.",
+      "incorrect_options": "Sticky sessions do not protect active requests during target deregistration. A cooldown controls scaling activity rather than connection draining, and larger instances do not ensure that in-progress requests survive scale-in.",
+      "key_clue": "Requests can remain active for up to 15 minutes while an instance is being removed during scale-in."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html#sticky-sessions](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html#sticky-sessions)",
+      "[https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)",
+      "[https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-cooldowns.html](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-cooldowns.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0006."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q012",
+    "exam_id": "saa-e08",
+    "bank_index": 467,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 6,
+    "topic": "Elastic Load Balancing connection draining and deregistration delay",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "An analytics platform runs on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. Some data export requests require as long as 12 minutes to finish. During scale-in, an instance that is processing an export must stop receiving new requests but must have enough time to complete its active request before termination. Which configuration will meet this requirement?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Configure the target group's deregistration delay timeout to exceed 720 seconds."
+        },
+        {
+          "id": "B",
+          "text": "Enable duration-based sticky sessions on the Application Load Balancer for at least 12 minutes."
+        },
+        {
+          "id": "C",
+          "text": "Configure an Auto Scaling cooldown period that exceeds 720 seconds."
+        },
+        {
+          "id": "D",
+          "text": "Replace the EC2 instances with a larger instance type that can process more simultaneous requests."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "The deregistration delay allows a draining target to complete active requests before it is deregistered and terminated. The timeout must exceed the maximum request duration.",
+      "incorrect_options": "Sticky sessions do not protect active requests during target deregistration. A cooldown controls scaling activity rather than connection draining, and larger instances do not ensure that in-progress requests survive scale-in.",
+      "key_clue": "Requests can remain active for up to 15 minutes while an instance is being removed during scale-in."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html#sticky-sessions](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/edit-target-group-attributes.html#sticky-sessions)",
+      "[https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)",
+      "[https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-cooldowns.html](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-cooldowns.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0006."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q013",
+    "exam_id": "saa-e08",
+    "bank_index": 468,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 7,
+    "topic": "AWS Lambda cost optimization",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company has an application that runs on a large general purpose Amazon EC2 instance type that is part of an EC2 Auto Scaling group. The company wants to reduce future costs associated with this application. After the company reviews metrics and logs in Amazon CloudWatch, the company notices that this application runs randomly a couple of times a day to retrieve and manage data. According to CloudWatch, the maximum runtime for each request is 10 minutes, the memory use is 4 GB, and the instances are always in the running state. Which solution will reduce costs the most?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Deploy the application on a large burstable EC2 instance."
+        },
+        {
+          "id": "B",
+          "text": "Containerize the application by using Amazon Elastic Kubernetes Service (Amazon EKS). Host the container on EC2 instances."
+        },
+        {
+          "id": "C",
+          "text": "Use AWS Instance Scheduler to start and stop the instances based on the runtimes in the logs."
+        },
+        {
+          "id": "D",
+          "text": "Refactor the application code to run as an AWS Lambda function."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "AWS Lambda charges for execution time and configured memory rather than for continuously running instances, making it well suited to infrequent and unpredictable workloads that complete within the Lambda maximum execution time.",
+      "incorrect_options": "Smaller EC2 instances and EKS worker nodes still incur costs while running. Instance Scheduler is unsuitable when execution times are unpredictable and does not provide per-invocation billing.",
+      "key_clue": "The workload runs only a few times per day, has unpredictable timing, and completes within 10 minutes."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://aws.amazon.com/ec2/pricing/on-demand/](https://aws.amazon.com/ec2/pricing/on-demand/)",
+      "[https://docs.aws.amazon.com/whitepapers/latest/overview-deployment-options/amazon-elastic-kubernetes-service.html](https://docs.aws.amazon.com/whitepapers/latest/overview-deployment-options/amazon-elastic-kubernetes-service.html)",
+      "[https://aws.amazon.com/solutions/implementations/instance-scheduler-on-aws/](https://aws.amazon.com/solutions/implementations/instance-scheduler-on-aws/)",
+      "[https://docs.aws.amazon.com/lambda/latest/dg/welcome.html](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0007."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q014",
+    "exam_id": "saa-e08",
+    "bank_index": 469,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 7,
+    "topic": "AWS Lambda cost optimization",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A logistics company runs a data-validation process on Amazon EC2 instances. The process is triggered unpredictably several times each day and never runs for more than 8 minutes. Monitoring shows that each invocation requires 3 GB of memory, but the EC2 instances remain running continuously between executions. The company wants the largest possible reduction in compute cost while preserving automatic scalability. Which solution should a solutions architect recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Move the process to a smaller burstable EC2 instance type."
+        },
+        {
+          "id": "B",
+          "text": "Package the process as a container and run it on Amazon EKS with EC2 worker nodes."
+        },
+        {
+          "id": "C",
+          "text": "Use AWS Instance Scheduler to start the EC2 instances at scheduled times each day."
+        },
+        {
+          "id": "D",
+          "text": "Refactor the process to run as an AWS Lambda function."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "AWS Lambda charges for execution time and configured memory rather than for continuously running instances, making it well suited to infrequent and unpredictable workloads that complete within the Lambda maximum execution time.",
+      "incorrect_options": "Smaller EC2 instances and EKS worker nodes still incur costs while running. Instance Scheduler is unsuitable when execution times are unpredictable and does not provide per-invocation billing.",
+      "key_clue": "The workload runs only a few times per day, has unpredictable timing, and completes within 10 minutes."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://aws.amazon.com/ec2/pricing/on-demand/](https://aws.amazon.com/ec2/pricing/on-demand/)",
+      "[https://docs.aws.amazon.com/whitepapers/latest/overview-deployment-options/amazon-elastic-kubernetes-service.html](https://docs.aws.amazon.com/whitepapers/latest/overview-deployment-options/amazon-elastic-kubernetes-service.html)",
+      "[https://aws.amazon.com/solutions/implementations/instance-scheduler-on-aws/](https://aws.amazon.com/solutions/implementations/instance-scheduler-on-aws/)",
+      "[https://docs.aws.amazon.com/lambda/latest/dg/welcome.html](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0007."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q015",
+    "exam_id": "saa-e08",
+    "bank_index": 470,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 8,
+    "topic": "Amazon FSx for Windows File Server",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company hosts several Windows file servers that run various production applications on Amazon EC2. The company also uses Amazon WorkSpaces. A solutions architect must create a storage strategy. The storage strategy should redundantly store personal files and shared directories for users and file servers that store data on AWS. The solutions architect wants to integrate the solution with the company's existing Active Directory. Which solution will meet these requirements?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create multiple network file shares by using Amazon FSx for Windows File Server. Manage the shares by using the existing Active Directory users and groups. Mount the shares by using built-in utilities."
+        },
+        {
+          "id": "B",
+          "text": "Deploy additional Amazon Elastic Block Store (Amazon EBS) volumes to each of the EC2 servers. Enable Windows Distributed File System (DFS). Create file shares with DFS and share the file shares to WorkSpaces by using the existing Active Directory permissions."
+        },
+        {
+          "id": "C",
+          "text": "Deploy an Amazon S3 File Gateway. Manage permissions to each file share by using the existing Active Directory."
+        },
+        {
+          "id": "D",
+          "text": "Create a network mount with multiple access points by using Amazon Elastic File System (Amazon EFS). Enforce permissions by using AWS IAM Identity Center policies and roles that are federated with the existing Active Directory. Mount the shares by using Microsoft Services for NFS."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "Amazon FSx for Windows File Server provides managed Windows file storage with native SMB support and Active Directory integration for existing users, groups, and permissions.",
+      "incorrect_options": "Amazon EFS is not the native managed choice for Windows SMB workloads. EBS volumes are block storage attached to individual instances, and S3 File Gateway is intended for hybrid access to Amazon S3 rather than as the primary shared Windows file system.",
+      "key_clue": "The workloads and users need redundant shared Windows file storage with existing Active Directory integration."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html)",
+      "[https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html](https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html)",
+      "[https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html](https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html)",
+      "[https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html](https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0008."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q016",
+    "exam_id": "saa-e08",
+    "bank_index": 471,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 8,
+    "topic": "Amazon FSx for Windows File Server",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A design studio runs Windows-based applications on Amazon EC2 and provides virtual desktops through Amazon WorkSpaces. Employees require durable home directories and shared project folders that can be accessed through standard Windows file-sharing tools. The solution must support the company's existing Active Directory users, groups, and permissions and provide highly available managed storage. Which solution should a solutions architect recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create Amazon EFS file systems with access points and mount them on the Windows instances by using NFS."
+        },
+        {
+          "id": "B",
+          "text": "Use Amazon FSx for Windows File Server to create SMB file shares integrated with the existing Active Directory, and mount the shares from the EC2 instances and WorkSpaces."
+        },
+        {
+          "id": "C",
+          "text": "Attach separate Amazon EBS volumes to each EC2 instance and configure the instances to share the volumes with WorkSpaces."
+        },
+        {
+          "id": "D",
+          "text": "Deploy an Amazon S3 File Gateway for each application server and use the gateway as the primary shared file system."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "B"
+    ],
+    "feedback": {
+      "summary": "Amazon FSx for Windows File Server provides managed Windows file storage with native SMB support and Active Directory integration for existing users, groups, and permissions.",
+      "incorrect_options": "Amazon EFS is not the native managed choice for Windows SMB workloads. EBS volumes are block storage attached to individual instances, and S3 File Gateway is intended for hybrid access to Amazon S3 rather than as the primary shared Windows file system.",
+      "key_clue": "The workloads and users need redundant shared Windows file storage with existing Active Directory integration."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html)",
+      "[https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html](https://docs.aws.amazon.com/ebs/latest/userguide/what-is-ebs.html)",
+      "[https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html](https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html)",
+      "[https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html](https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0008."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q017",
+    "exam_id": "saa-e08",
+    "bank_index": 472,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 9,
+    "topic": "Containerized asynchronous processing with Amazon ECS on AWS Fargate and Amazon SQS",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company is developing a video processing application. The application receives video upload requests, processes the videos, and stores the final videos. Each video requires up to 30 minutes to be processed. The application must be able to handle varying loads throughout the day. A solutions architect needs to design a scalable architecture that can automatically adjust to fluctuating demand. The company wants to use containerized applications. The company wants to avoid managing the underlying infrastructure. Which solution will meet these requirements?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Implement Amazon ECS on Amazon EC2 instances to run the containerized application. Use Amazon Simple Queue Service (Amazon SQS) as a queue for incoming requests. Configure auto scaling based on queue metrics."
+        },
+        {
+          "id": "B",
+          "text": "Deploy an AWS Lambda function from a container image to process the videos. Use Amazon Simple Queue Service (Amazon SQS) as a queue for incoming requests. Enable provisioned concurrency."
+        },
+        {
+          "id": "C",
+          "text": "Implement Amazon ECS on AWS Fargate to run the containerized application. Use Amazon Simple Queue Service (Amazon SQS) as a queue for incoming requests. Configure auto scaling based on queue metrics."
+        },
+        {
+          "id": "D",
+          "text": "Deploy the containerized application on Amazon Elastic Kubernetes Service (Amazon EKS) managed node groups. Use Amazon Simple Notification Service (Amazon SNS) to distribute incoming requests to the containers."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "C"
+    ],
+    "feedback": {
+      "summary": "Amazon ECS on AWS Fargate runs containers without managing servers. Amazon SQS decouples request intake from processing, and task scaling based on queue depth adjusts capacity to demand.",
+      "incorrect_options": "ECS on EC2 and EKS managed node groups require managing worker nodes. Lambda cannot run a single invocation for more than 15 minutes, and SNS broadcasts messages to subscribers rather than serving as a work queue.",
+      "key_clue": "Processing can exceed the Lambda execution limit, workload volume fluctuates, and the company does not want to manage underlying infrastructure."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html)",
+      "[https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)",
+      "[https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)",
+      "[https://docs.aws.amazon.com/lambda/latest/dg/images-create.html](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html)",
+      "[https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html)",
+      "[https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/run-message-driven-workloads-at-scale-by-using-aws-fargate.html](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/run-message-driven-workloads-at-scale-by-using-aws-fargate.html)",
+      "[https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)",
+      "[https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html#sqs-difference-from-amazon-mq-sns](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html#sqs-difference-from-amazon-mq-sns)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0009."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q018",
+    "exam_id": "saa-e08",
+    "bank_index": 473,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 9,
+    "topic": "Containerized asynchronous processing with Amazon ECS on AWS Fargate and Amazon SQS",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A digital publishing company needs to generate high-resolution document previews after users upload files. Each rendering task can take up to 35 minutes, and the number of uploads changes significantly throughout the day. The company requires a container-based design that absorbs traffic spikes, scales workers according to pending work, and does not require the operations team to maintain servers. Which solution should a solutions architect recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Run the rendering containers on Amazon ECS with the Amazon EC2 launch type. Place requests in an Amazon SQS queue and configure EC2 Auto Scaling according to queue depth."
+        },
+        {
+          "id": "B",
+          "text": "Run the rendering containers as AWS Lambda functions. Invoke the functions from Amazon SQS and configure provisioned concurrency for the expected peak load."
+        },
+        {
+          "id": "C",
+          "text": "Run the rendering containers on Amazon EKS managed node groups and publish all rendering requests to an Amazon SNS topic."
+        },
+        {
+          "id": "D",
+          "text": "Run the rendering containers on Amazon ECS with AWS Fargate. Send rendering requests to an Amazon SQS queue and scale ECS tasks based on queue metrics."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "Amazon ECS on AWS Fargate runs containers without managing servers. Amazon SQS decouples request intake from processing, and task scaling based on queue depth adjusts capacity to demand.",
+      "incorrect_options": "ECS on EC2 and EKS managed node groups require managing worker nodes. Lambda cannot run a single invocation for more than 15 minutes, and SNS broadcasts messages to subscribers rather than serving as a work queue.",
+      "key_clue": "Processing can exceed the Lambda execution limit, workload volume fluctuates, and the company does not want to manage underlying infrastructure."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html](https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-using-sqs-queue.html)",
+      "[https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)",
+      "[https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)",
+      "[https://docs.aws.amazon.com/lambda/latest/dg/images-create.html](https://docs.aws.amazon.com/lambda/latest/dg/images-create.html)",
+      "[https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/AWS_Fargate.html)",
+      "[https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/run-message-driven-workloads-at-scale-by-using-aws-fargate.html](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/run-message-driven-workloads-at-scale-by-using-aws-fargate.html)",
+      "[https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html](https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)",
+      "[https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html#sqs-difference-from-amazon-mq-sns](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html#sqs-difference-from-amazon-mq-sns)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0009."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q019",
+    "exam_id": "saa-e08",
+    "bank_index": 474,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 10,
+    "topic": "Amazon EC2 instance store for high-performance temporary storage",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A media company is designing a new application for graphic rendering. The application requires up to 400 GB of storage for temporary data that is discarded after the frames are rendered. The application requires approximately 40,000 random IOPS to perform the rendering. What is the most cost-effective storage option for this rendering application?",
+      "options": [
+        {
+          "id": "A",
+          "text": "A storage optimized Amazon EC2 instance with a Provisioned IOPS SSD (io1 or io2) Amazon Elastic Block Store (Amazon EBS) volume"
+        },
+        {
+          "id": "B",
+          "text": "A burstable Amazon EC2 instance with a Throughput Optimized HDD (st1) Amazon Elastic Block Store (Amazon EBS) volume"
+        },
+        {
+          "id": "C",
+          "text": "A burstable Amazon EC2 instance with Amazon S3 storage over a VPC endpoint"
+        },
+        {
+          "id": "D",
+          "text": "A storage optimized Amazon EC2 instance with instance store storage"
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "Instance store provides local, low-latency storage with high random IOPS and no separate storage charge, making it appropriate for temporary data that can be discarded.",
+      "incorrect_options": "Provisioned IOPS EBS can meet the performance requirement but adds cost and persistence that the workload does not need. Throughput Optimized HDD is not designed for high random IOPS, and Amazon S3 is object storage rather than low-latency scratch block storage.",
+      "key_clue": "The data is temporary and disposable, while the application requires tens of thousands of random IOPS."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/ebs/latest/userguide/provisioned-iops.html](https://docs.aws.amazon.com/ebs/latest/userguide/provisioned-iops.html)",
+      "[https://aws.amazon.com/ebs/pricing/](https://aws.amazon.com/ebs/pricing/)",
+      "[https://docs.aws.amazon.com/ebs/latest/userguide/hdd-vols.html](https://docs.aws.amazon.com/ebs/latest/userguide/hdd-vols.html)",
+      "[https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance-design-patterns.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance-design-patterns.html)",
+      "[https://docs.aws.amazon.com/ec2/latest/instancetypes/so.html](https://docs.aws.amazon.com/ec2/latest/instancetypes/so.html)",
+      "[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0010."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q020",
+    "exam_id": "saa-e08",
+    "bank_index": 475,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 10,
+    "topic": "Amazon EC2 instance store for high-performance temporary storage",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A scientific research platform runs temporary simulations on Amazon EC2. Each simulation needs 350 GB of scratch space and about 45,000 low-latency random IOPS. The generated data is deleted immediately after a simulation completes and does not need to survive an instance stop or termination. The company wants the lowest-cost storage design that satisfies the performance requirement. Which solution should a solutions architect recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use storage optimized Amazon EC2 instances with local instance store volumes."
+        },
+        {
+          "id": "B",
+          "text": "Use general purpose Amazon EC2 instances with Amazon EBS Throughput Optimized HDD volumes."
+        },
+        {
+          "id": "C",
+          "text": "Use storage optimized Amazon EC2 instances with Amazon EBS Provisioned IOPS SSD volumes."
+        },
+        {
+          "id": "D",
+          "text": "Use burstable Amazon EC2 instances and store the temporary simulation data in Amazon S3 through a gateway endpoint."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "Instance store provides local, low-latency storage with high random IOPS and no separate storage charge, making it appropriate for temporary data that can be discarded.",
+      "incorrect_options": "Provisioned IOPS EBS can meet the performance requirement but adds cost and persistence that the workload does not need. Throughput Optimized HDD is not designed for high random IOPS, and Amazon S3 is object storage rather than low-latency scratch block storage.",
+      "key_clue": "The data is temporary and disposable, while the application requires tens of thousands of random IOPS."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/ebs/latest/userguide/provisioned-iops.html](https://docs.aws.amazon.com/ebs/latest/userguide/provisioned-iops.html)",
+      "[https://aws.amazon.com/ebs/pricing/](https://aws.amazon.com/ebs/pricing/)",
+      "[https://docs.aws.amazon.com/ebs/latest/userguide/hdd-vols.html](https://docs.aws.amazon.com/ebs/latest/userguide/hdd-vols.html)",
+      "[https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance-design-patterns.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/optimizing-performance-design-patterns.html)",
+      "[https://docs.aws.amazon.com/ec2/latest/instancetypes/so.html](https://docs.aws.amazon.com/ec2/latest/instancetypes/so.html)",
+      "[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0010."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q021",
+    "exam_id": "saa-e08",
+    "bank_index": 476,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 11,
+    "topic": "Amazon DynamoDB Accelerator (DAX)",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A solutions architect is designing a web application architecture with an Amazon API Gateway endpoint to expose a REST API. The solutions architect uses AWS Lambda to process the service and Amazon DynamoDB for the database. The solutions architect wants to improve the latency of the application because users report slow data load times. The application does not require consistent reads. Which solution will meet these requirements with the least operational overhead?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Deploy an Amazon ElastiCache (Redis OSS) cache in front of DynamoDB."
+        },
+        {
+          "id": "B",
+          "text": "Deploy a standalone Amazon ElastiCache (Memcached) cache."
+        },
+        {
+          "id": "C",
+          "text": "Migrate the data from DynamoDB to Amazon DocumentDB (with MongoDB compatibility)."
+        },
+        {
+          "id": "D",
+          "text": "Enable DynamoDB Accelerator (DAX) on the table."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "DAX is a managed, in-memory cache designed specifically for DynamoDB. It can provide microsecond read latency for eventually consistent reads with less operational work than designing and operating a custom cache.",
+      "incorrect_options": "Redis OSS and Memcached require custom caching behavior and cache management. Migrating to DocumentDB requires data and application changes without directly addressing DynamoDB read latency.",
+      "key_clue": "The workload uses DynamoDB, needs faster reads, accepts eventual consistency, and requires the least operational overhead."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html)",
+      "[https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/create-cache-mem.html](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/create-cache-mem.html)",
+      "[https://docs.aws.amazon.com/documentdb/latest/developerguide/what-is.html](https://docs.aws.amazon.com/documentdb/latest/developerguide/what-is.html)",
+      "[https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html)",
+      "[https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.client.modify-your-app.html](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.client.modify-your-app.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0011."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q022",
+    "exam_id": "saa-e08",
+    "bank_index": 477,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 11,
+    "topic": "Amazon DynamoDB Accelerator (DAX)",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A serverless inventory API uses Amazon API Gateway, AWS Lambda, and Amazon DynamoDB. Users frequently retrieve the same product availability records, but response times for read requests are higher than desired. The application can tolerate eventually consistent reads. The company wants to reduce read latency with minimal changes to its architecture and operational processes. Which solution should a solutions architect recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create an Amazon ElastiCache for Redis OSS cluster and modify the Lambda functions to implement cache population and invalidation."
+        },
+        {
+          "id": "B",
+          "text": "Deploy an Amazon ElastiCache for Memcached cluster and add custom caching logic to the Lambda functions."
+        },
+        {
+          "id": "C",
+          "text": "Migrate the inventory records from DynamoDB to Amazon DocumentDB and update the application data-access code."
+        },
+        {
+          "id": "D",
+          "text": "Create a DynamoDB Accelerator (DAX) cluster and update the application to use a DAX client for DynamoDB read operations."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "DAX is a managed, in-memory cache designed specifically for DynamoDB. It can provide microsecond read latency for eventually consistent reads with less operational work than designing and operating a custom cache.",
+      "incorrect_options": "Redis OSS and Memcached require custom caching behavior and cache management. Migrating to DocumentDB requires data and application changes without directly addressing DynamoDB read latency.",
+      "key_clue": "The workload uses DynamoDB, needs faster reads, accepts eventual consistency, and requires the least operational overhead."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.html)",
+      "[https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/create-cache-mem.html](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/create-cache-mem.html)",
+      "[https://docs.aws.amazon.com/documentdb/latest/developerguide/what-is.html](https://docs.aws.amazon.com/documentdb/latest/developerguide/what-is.html)",
+      "[https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.html)",
+      "[https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.client.modify-your-app.html](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.client.modify-your-app.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0011."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q023",
+    "exam_id": "saa-e08",
+    "bank_index": 478,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 12,
+    "topic": "Hybrid connectivity with AWS Direct Connect, Site-to-Site VPN, and Transit Gateway",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A solutions architect needs to connect workloads in an on-premises data center with multiple Amazon VPCs. The VPCs must be centrally connected through an AWS Transit Gateway. The VPCs should have a connection of at least 1 GB to the data center with an active failover configuration. Currently only one AWS Direct Connect link is being used to establish the connection. What is the most cost-effective way to connect the workloads?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use the existing Direct Connect dedicated link as the active connection. Add a second Direct Connect dedicated link as a failover connection."
+        },
+        {
+          "id": "B",
+          "text": "Use the existing Direct Connect dedicated link as the active connection. Add AWS Client VPN connections as failover connections."
+        },
+        {
+          "id": "C",
+          "text": "Configure AWS Site-to-Site VPN connections as active connections. Set the existing Direct Connect dedicated link as a failover connection."
+        },
+        {
+          "id": "D",
+          "text": "Use the existing Direct Connect dedicated link as the active connection. Add AWS Site-to-Site VPN connections as failover connections."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "AWS Site-to-Site VPN provides a lower-cost backup path for an existing Direct Connect connection. Transit Gateway can centrally connect the on-premises network to multiple VPCs, while Direct Connect remains preferred.",
+      "incorrect_options": "A second Direct Connect connection provides redundancy but costs more. Client VPN is intended for individual client access, and Direct Connect is evaluated before Site-to-Site VPN for Transit Gateway routing.",
+      "key_clue": "The company already has Direct Connect, needs active failover to a Transit Gateway, and requires the most cost-effective design."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/whitepapers/latest/hybrid-connectivity/reliability.html](https://docs.aws.amazon.com/whitepapers/latest/hybrid-connectivity/reliability.html)",
+      "[https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html)",
+      "[https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html)",
+      "[https://docs.aws.amazon.com/vpc/latest/tgw/how-transit-gateways-work.html](https://docs.aws.amazon.com/vpc/latest/tgw/how-transit-gateways-work.html)",
+      "[https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0012."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q024",
+    "exam_id": "saa-e08",
+    "bank_index": 479,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 12,
+    "topic": "Hybrid connectivity with AWS Direct Connect, Site-to-Site VPN, and Transit Gateway",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A manufacturing company has several Amazon VPCs attached to an AWS Transit Gateway. Its factory network connects to AWS through an existing 1 Gbps AWS Direct Connect dedicated connection. The company needs resilient connectivity to all VPCs if the Direct Connect connection fails, while keeping the Direct Connect connection as the preferred path and minimizing additional cost. Which solution should a solutions architect recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Add a second AWS Direct Connect dedicated connection and configure it as the backup path."
+        },
+        {
+          "id": "B",
+          "text": "Create AWS Client VPN endpoints for factory users and use them as the backup path to the Transit Gateway."
+        },
+        {
+          "id": "C",
+          "text": "Create AWS Site-to-Site VPN connections to the Transit Gateway as backup paths while retaining the existing Direct Connect connection as the preferred path."
+        },
+        {
+          "id": "D",
+          "text": "Use AWS Site-to-Site VPN connections as the preferred paths and configure the Direct Connect dedicated connection as the failover path."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "C"
+    ],
+    "feedback": {
+      "summary": "AWS Site-to-Site VPN provides a lower-cost backup path for an existing Direct Connect connection. Transit Gateway can centrally connect the on-premises network to multiple VPCs, while Direct Connect remains preferred.",
+      "incorrect_options": "A second Direct Connect connection provides redundancy but costs more. Client VPN is intended for individual client access, and Direct Connect is evaluated before Site-to-Site VPN for Transit Gateway routing.",
+      "key_clue": "The company already has Direct Connect, needs active failover to a Transit Gateway, and requires the most cost-effective design."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/whitepapers/latest/hybrid-connectivity/reliability.html](https://docs.aws.amazon.com/whitepapers/latest/hybrid-connectivity/reliability.html)",
+      "[https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html)",
+      "[https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html](https://docs.aws.amazon.com/vpn/latest/clientvpn-admin/what-is.html)",
+      "[https://docs.aws.amazon.com/vpc/latest/tgw/how-transit-gateways-work.html](https://docs.aws.amazon.com/vpc/latest/tgw/how-transit-gateways-work.html)",
+      "[https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0012."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q025",
+    "exam_id": "saa-e08",
+    "bank_index": 480,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 13,
+    "topic": "Amazon DocumentDB authentication and IAM authorization",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company uses Amazon DocumentDB (with MongoDB compatibility) for its database. The company wants to use AWS Identity and Access Management (IAM) to manage database access. The company wants to streamline the authentication processes. Which solution will meet these requirements?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Configure IAM users and policies to handle both AWS level actions and direct database authentication for Amazon DocumentDB."
+        },
+        {
+          "id": "B",
+          "text": "Use IAM policies to control AWS level actions that relate to Amazon DocumentDB. Use a database username and password to connect to the Amazon DocumentDB database."
+        },
+        {
+          "id": "C",
+          "text": "Use IAM roles to authenticate directly to Amazon DocumentDB without requiring a database username and password."
+        },
+        {
+          "id": "D",
+          "text": "Implement an IAM policy that automatically updates passwords in Amazon DocumentDB to eliminate the need for traditional authentication."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "B"
+    ],
+    "feedback": {
+      "summary": "IAM policies control AWS-level actions on Amazon DocumentDB resources, while database connections to DocumentDB use traditional database authentication with a username and password.",
+      "incorrect_options": "IAM users and roles cannot directly authenticate database connections to Amazon DocumentDB. IAM policies define AWS permissions and do not replace or directly manage database authentication credentials.",
+      "key_clue": "The question distinguishes AWS resource management permissions from authenticating a connection to the DocumentDB database."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/documentdb/latest/developerguide/security-iam.html](https://docs.aws.amazon.com/documentdb/latest/developerguide/security-iam.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0013."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q026",
+    "exam_id": "saa-e08",
+    "bank_index": 481,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 13,
+    "topic": "Amazon DocumentDB authentication and IAM authorization",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "An application team uses Amazon DocumentDB (with MongoDB compatibility) to store product catalog documents. Security administrators need IAM policies to control AWS management actions, such as modifying DocumentDB clusters. The application itself must also connect to the database to query and update documents. Which authentication and authorization model should the team use?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use IAM roles for both DocumentDB cluster management and direct authentication of database connections."
+        },
+        {
+          "id": "B",
+          "text": "Use IAM policies for AWS-level DocumentDB management actions and use a database username and password for connections to the DocumentDB cluster."
+        },
+        {
+          "id": "C",
+          "text": "Create IAM users for application connections and use their access keys as the database credentials for DocumentDB."
+        },
+        {
+          "id": "D",
+          "text": "Use an IAM policy to rotate the DocumentDB database passwords automatically and connect without database credentials."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "B"
+    ],
+    "feedback": {
+      "summary": "IAM policies control AWS-level actions on Amazon DocumentDB resources, while database connections to DocumentDB use traditional database authentication with a username and password.",
+      "incorrect_options": "IAM users and roles cannot directly authenticate database connections to Amazon DocumentDB. IAM policies define AWS permissions and do not replace or directly manage database authentication credentials.",
+      "key_clue": "The question distinguishes AWS resource management permissions from authenticating a connection to the DocumentDB database."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/documentdb/latest/developerguide/security-iam.html](https://docs.aws.amazon.com/documentdb/latest/developerguide/security-iam.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0013."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q027",
+    "exam_id": "saa-e08",
+    "bank_index": 482,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 14,
+    "topic": "Amazon VPC private subnets and security groups for Amazon RDS",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 2,
+    "generated_question": {
+      "scenario": "A company has strict data protection requirements. A solutions architect must configure security for a VPC to ensure that backend Amazon RDS DB instances cannot be accessed from the internet. The solutions architect must ensure that the DB instances are accessible from the application tier over a specified port only. Which actions should the solutions architect take to meet these requirements?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Attach an elastic network interface with a private IPv4 address to each DB instance."
+        },
+        {
+          "id": "B",
+          "text": "Specify a DB subnet group that contains only private subnets for the DB instances."
+        },
+        {
+          "id": "C",
+          "text": "Configure an AWS Direct Connect connection on the database port between the application tier and the backend."
+        },
+        {
+          "id": "D",
+          "text": "Add an inbound rule to the database security group that allows requests from the security group of the application tier over the database port. Remove other inbound rules."
+        },
+        {
+          "id": "E",
+          "text": "Configure AWS Shield with the VPC. Update the route tables for the subnets that the DB instances use."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "B",
+      "D"
+    ],
+    "feedback": {
+      "summary": "Private subnets prevent direct internet routing to the database tier, and a security group rule that references the application-tier security group restricts database access to the required port and source.",
+      "incorrect_options": "Elastic IP addresses would expose the database publicly. AWS Shield is for DDoS protection, and Direct Connect is unrelated to controlling communication between application and database tiers in the same VPC.",
+      "key_clue": "The database must not be internet accessible and must accept traffic only from the application tier on one database port."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html)",
+      "[https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html#VPC_Scenario2_Routing](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html#VPC_Scenario2_Routing)",
+      "[https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html)",
+      "[https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html#VPCSecurityGroups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html#VPCSecurityGroups)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html](https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0014."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q028",
+    "exam_id": "saa-e08",
+    "bank_index": 483,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 14,
+    "topic": "Amazon VPC private subnets and security groups for Amazon RDS",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 2,
+    "generated_question": {
+      "scenario": "A company deploys a three-tier application in a VPC. Amazon EC2 instances in the application tier must connect to an Amazon RDS for PostgreSQL database on port 5432. Security policy prohibits all direct internet access to the database. Which two actions should a solutions architect take?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Place the DB instances in an RDS DB subnet group that contains private subnets only."
+        },
+        {
+          "id": "B",
+          "text": "Associate an Elastic IP address with each DB instance to control its public IP address."
+        },
+        {
+          "id": "C",
+          "text": "Add an inbound rule to the DB security group that permits TCP port 5432 only from the security group assigned to the application-tier instances."
+        },
+        {
+          "id": "D",
+          "text": "Configure AWS Shield Advanced to prevent the DB instances from receiving traffic from the internet."
+        },
+        {
+          "id": "E",
+          "text": "Create an AWS Direct Connect connection between the application-tier subnets and the database subnets."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A",
+      "C"
+    ],
+    "feedback": {
+      "summary": "Private subnets prevent direct internet routing to the database tier, and a security group rule that references the application-tier security group restricts database access to the required port and source.",
+      "incorrect_options": "Elastic IP addresses would expose the database publicly. AWS Shield is for DDoS protection, and Direct Connect is unrelated to controlling communication between application and database tiers in the same VPC.",
+      "key_clue": "The database must not be internet accessible and must accept traffic only from the application tier on one database port."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html)",
+      "[https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html#VPC_Scenario2_Routing](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-example-private-subnets-nat.html#VPC_Scenario2_Routing)",
+      "[https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html)",
+      "[https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html#VPCSecurityGroups](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-security-groups.html#VPCSecurityGroups)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html](https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0014."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q029",
+    "exam_id": "saa-e08",
+    "bank_index": 484,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 15,
+    "topic": "Cost optimization with Amazon ECS on AWS Fargate and Amazon Aurora Serverless",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company is deploying a new application that will consist of an application layer and an online transaction processing (OLTP) relational database. The application must be available at all times. However, the application will have unpredictable traffic patterns. The company wants to pay the minimum for compute costs during these idle periods. Which solution will meet these requirements most cost effectively?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Deploy the application on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. Use Amazon RDS for MySQL for the database."
+        },
+        {
+          "id": "B",
+          "text": "Deploy the application and a MySQL database to Amazon EC2 instances by using AWS CloudFormation. Delete the instances at the beginning of the idle periods."
+        },
+        {
+          "id": "C",
+          "text": "Run the application on Amazon EC2 instances by using a burstable instance type. Use Amazon Redshift for the database."
+        },
+        {
+          "id": "D",
+          "text": "Run the application in containers with Amazon Elastic Container Service (Amazon ECS) on AWS Fargate. Use Amazon Aurora Serverless for the database."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "Amazon ECS on AWS Fargate provides serverless container compute, and Amazon Aurora Serverless is intended to adjust relational database capacity in response to demand, reducing the need for fixed provisioned capacity.",
+      "incorrect_options": "EC2-based solutions retain costs for running instances during idle periods. Deleting database instances compromises availability and persistence, while Amazon Redshift is designed for OLAP rather than transactional OLTP workloads.",
+      "key_clue": "The application requires an always-available transactional architecture with unpredictable demand and minimal idle compute cost."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)",
+      "[https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)",
+      "[https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html](https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html)",
+      "[https://aws.amazon.com/fargate/pricing/](https://aws.amazon.com/fargate/pricing/)",
+      "[https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.html](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0015."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q030",
+    "exam_id": "saa-e08",
+    "bank_index": 485,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 15,
+    "topic": "Cost optimization with Amazon ECS on AWS Fargate and Amazon Aurora Serverless",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A startup is launching an order-management service with a relational OLTP database. The service must remain available, but its traffic is highly variable and can be very low for extended periods. The startup wants to avoid paying for continuously provisioned application servers and database capacity when demand is idle. Which architecture should a solutions architect recommend as the most cost-effective?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Run the application on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer and use Amazon RDS for MySQL."
+        },
+        {
+          "id": "B",
+          "text": "Deploy the application and a MySQL database on Amazon EC2 by using AWS CloudFormation, and terminate the instances whenever traffic becomes idle."
+        },
+        {
+          "id": "C",
+          "text": "Run the application on burstable Amazon EC2 instances and store transactional data in Amazon Redshift."
+        },
+        {
+          "id": "D",
+          "text": "Run the application as containers on Amazon ECS with AWS Fargate and use Amazon Aurora Serverless for the relational database."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "Amazon ECS on AWS Fargate provides serverless container compute, and Amazon Aurora Serverless is intended to adjust relational database capacity in response to demand, reducing the need for fixed provisioned capacity.",
+      "incorrect_options": "EC2-based solutions retain costs for running instances during idle periods. Deleting database instances compromises availability and persistence, while Amazon Redshift is designed for OLAP rather than transactional OLTP workloads.",
+      "key_clue": "The application requires an always-available transactional architecture with unpredictable demand and minimal idle compute cost."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html](https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)",
+      "[https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)",
+      "[https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html](https://docs.aws.amazon.com/redshift/latest/mgmt/welcome.html)",
+      "[https://aws.amazon.com/fargate/pricing/](https://aws.amazon.com/fargate/pricing/)",
+      "[https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.html](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0015."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q031",
+    "exam_id": "saa-e08",
+    "bank_index": 486,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 16,
+    "topic": "AWS Shield Advanced for DDoS protection",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "An ecommerce company is experiencing sophisticated layer 3 DDoS volumetric attacks against its main website. The website runs on Amazon EC2 and uses Amazon CloudFront for global content delivery. A solutions architect must implement an AWS managed solution to protect the website from the DDoS attacks. The solution must automatically detect and mitigate the attacks to minimize application downtime and latency. Which solution will meet these requirements with the least operational overhead?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Add a new DDoS protection managed rule group to the web ACL to protect EC2 instances in AWS WAF."
+        },
+        {
+          "id": "B",
+          "text": "Use AWS Application Migration Service to migrate the website from Amazon EC2 to Amazon S3 to handle the additional load."
+        },
+        {
+          "id": "C",
+          "text": "Subscribe to AWS Shield Advanced. Add the CloudFront distribution as a protected resource."
+        },
+        {
+          "id": "D",
+          "text": "Create a DNS firewall block rule in Amazon Route 53 Resolver DNS Firewall. Add the rule to a DNS firewall rule group and associate the rule group to the VPC of EC2 instances."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "C"
+    ],
+    "feedback": {
+      "summary": "AWS Shield Advanced is an AWS-managed DDoS protection service that can protect a CloudFront distribution and automatically detect and mitigate sophisticated volumetric attacks across the AWS global edge network.",
+      "incorrect_options": "AWS WAF primarily addresses Layer 7 web requests, not Layer 3 volumetric attacks. Route 53 Resolver DNS Firewall filters outbound DNS traffic, and Application Migration Service does not mitigate DDoS traffic.",
+      "key_clue": "The attack is a sophisticated Layer 3 volumetric DDoS attack, and the CloudFront distribution is the public entry point."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/ddos-resiliency.html](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-resiliency.html)",
+      "[https://docs.aws.amazon.com/mgn/latest/ug/what-is-application-migration-service.html](https://docs.aws.amazon.com/mgn/latest/ug/what-is-application-migration-service.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/ddos-event-mitigation-logic-continuous-inspection.html](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-event-mitigation-logic-continuous-inspection.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/ddos-resiliency-example-web.html](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-resiliency-example-web.html)",
+      "[https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-dns-firewall.html](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-dns-firewall.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0016."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q032",
+    "exam_id": "saa-e08",
+    "bank_index": 487,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 16,
+    "topic": "AWS Shield Advanced for DDoS protection",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A global ticketing platform serves its public website through an Amazon CloudFront distribution with an Amazon EC2 origin. The platform is being targeted by large, sophisticated network-layer DDoS attacks that create availability and latency risks. The company requires an AWS-managed service that automatically detects and mitigates the attacks at the edge with minimal operational work. Which solution should a solutions architect recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Configure AWS WAF managed rules on the EC2 instances to block the incoming network-layer attack traffic."
+        },
+        {
+          "id": "B",
+          "text": "Subscribe to AWS Shield Advanced and protect the Amazon CloudFront distribution."
+        },
+        {
+          "id": "C",
+          "text": "Create Amazon Route 53 Resolver DNS Firewall rules and associate them with the VPC that contains the EC2 origin."
+        },
+        {
+          "id": "D",
+          "text": "Use AWS Application Migration Service to migrate the website to Amazon S3."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "B"
+    ],
+    "feedback": {
+      "summary": "AWS Shield Advanced is an AWS-managed DDoS protection service that can protect a CloudFront distribution and automatically detect and mitigate sophisticated volumetric attacks across the AWS global edge network.",
+      "incorrect_options": "AWS WAF primarily addresses Layer 7 web requests, not Layer 3 volumetric attacks. Route 53 Resolver DNS Firewall filters outbound DNS traffic, and Application Migration Service does not mitigate DDoS traffic.",
+      "key_clue": "The attack is a sophisticated Layer 3 volumetric DDoS attack, and the CloudFront distribution is the public entry point."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/ddos-resiliency.html](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-resiliency.html)",
+      "[https://docs.aws.amazon.com/mgn/latest/ug/what-is-application-migration-service.html](https://docs.aws.amazon.com/mgn/latest/ug/what-is-application-migration-service.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-advanced-summary.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/ddos-event-mitigation-logic-continuous-inspection.html](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-event-mitigation-logic-continuous-inspection.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/ddos-resiliency-example-web.html](https://docs.aws.amazon.com/waf/latest/developerguide/ddos-resiliency-example-web.html)",
+      "[https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-dns-firewall.html](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver-dns-firewall.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0016."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q033",
+    "exam_id": "saa-e08",
+    "bank_index": 488,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 17,
+    "topic": "Multi-VPC networking with AWS Transit Gateway and AWS Network Firewall",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A solutions architect must interconnect 10 Amazon VPCs through a centralized and scalable solution. Five of the VPCs must have full connectivity to all 10 of the VPCs. Five of the VPCs must connect to only a subset of the VPCs. Additionally, all VPCs must perform deep packet inspection of the network traffic to and from the internet and between the VPCs. Which solution will meet these requirements with the least operational overhead?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Use AWS Transit Gateway to interconnect the VPCs. Use AWS Network Firewall for deep packet inspection of the network traffic."
+        },
+        {
+          "id": "B",
+          "text": "Use VPC peering to interconnect the VPCs. Use AWS WAF for deep packet inspection of the network traffic."
+        },
+        {
+          "id": "C",
+          "text": "Use AWS Transit Gateway to interconnect the VPCs. Use AWS WAF for deep packet inspection of the network traffic."
+        },
+        {
+          "id": "D",
+          "text": "Use VPC peering to interconnect the VPCs. Use AWS Network Firewall for deep packet inspection of the network traffic."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "AWS Transit Gateway provides a scalable hub-and-spoke network and route tables can segment VPC connectivity. AWS Network Firewall provides managed deep packet inspection for network traffic.",
+      "incorrect_options": "VPC peering becomes difficult to manage as the number of VPCs increases and does not provide centralized segmentation. AWS WAF filters Layer 7 web requests, not general network traffic requiring deep packet inspection.",
+      "key_clue": "The design needs centralized, scalable VPC connectivity, selective routing, and inspection of both east-west and internet traffic."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/transit-gateway.html](https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/transit-gateway.html)",
+      "[https://docs.aws.amazon.com/vpc/latest/userguide/network-firewall.html](https://docs.aws.amazon.com/vpc/latest/userguide/network-firewall.html)",
+      "[https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0017."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q034",
+    "exam_id": "saa-e08",
+    "bank_index": 489,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 17,
+    "topic": "Multi-VPC networking with AWS Transit Gateway and AWS Network Firewall",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "An enterprise operates 12 Amazon VPCs for separate business units. Some VPCs require unrestricted connectivity with every other VPC, while others must communicate only with approved shared-service VPCs. All east-west traffic and internet-bound traffic must pass through deep packet inspection. The company wants a centrally managed architecture that minimizes networking administration. Which solution should a solutions architect recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create VPC peering connections between the VPCs and deploy AWS WAF web ACLs for deep packet inspection."
+        },
+        {
+          "id": "B",
+          "text": "Attach the VPCs to AWS Transit Gateway, use Transit Gateway route tables to control connectivity, and use AWS Network Firewall for deep packet inspection."
+        },
+        {
+          "id": "C",
+          "text": "Create VPC peering connections between the VPCs and use AWS Network Firewall in each VPC."
+        },
+        {
+          "id": "D",
+          "text": "Attach the VPCs to AWS Transit Gateway and use AWS WAF to inspect all network traffic between VPCs."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "B"
+    ],
+    "feedback": {
+      "summary": "AWS Transit Gateway provides a scalable hub-and-spoke network and route tables can segment VPC connectivity. AWS Network Firewall provides managed deep packet inspection for network traffic.",
+      "incorrect_options": "VPC peering becomes difficult to manage as the number of VPCs increases and does not provide centralized segmentation. AWS WAF filters Layer 7 web requests, not general network traffic requiring deep packet inspection.",
+      "key_clue": "The design needs centralized, scalable VPC connectivity, selective routing, and inspection of both east-west and internet traffic."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/transit-gateway.html](https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/transit-gateway.html)",
+      "[https://docs.aws.amazon.com/vpc/latest/userguide/network-firewall.html](https://docs.aws.amazon.com/vpc/latest/userguide/network-firewall.html)",
+      "[https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0017."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q035",
+    "exam_id": "saa-e08",
+    "bank_index": 490,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 18,
+    "topic": "Amazon RDS storage configuration and General Purpose SSD (gp3)",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company is transitioning its Amazon EC2 based MariaDB database to Amazon RDS. The company has already identified a database instance type that will meet the company's CPU and memory requirements. The database currently provides 40 GiB of storage capacity and 1,000 IOPS. Which storage configuration for the Amazon RDS for MariaDB instance is most cost-effective?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Provision 350 GiB of magnetic storage for the RDS instance."
+        },
+        {
+          "id": "B",
+          "text": "Provision 334 GiB of General Purpose SSD storage (gp2) for the RDS instance."
+        },
+        {
+          "id": "C",
+          "text": "Provision 50 GiB of Provisioned IOPS storage with 1,000 IOPS for the RDS instance."
+        },
+        {
+          "id": "D",
+          "text": "Provision 50 GiB of General Purpose SSD (gp3) storage for the RDS instance."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "General Purpose SSD gp3 includes 3,000 IOPS independently of the allocated storage size, so it meets the required IOPS while allocating only the needed capacity.",
+      "incorrect_options": "gp2 storage must be overprovisioned to increase baseline IOPS. Provisioned IOPS SSD is unnecessary for this IOPS level and costs more, while magnetic storage does not provide configurable IOPS.",
+      "key_clue": "The database needs relatively low IOPS, and gp3 provides 3,000 included IOPS without increasing storage capacity."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#Concepts.Storage](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#Concepts.Storage)",
+      "[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html)",
+      "[https://aws.amazon.com/ebs/pricing/](https://aws.amazon.com/ebs/pricing/)",
+      "[https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#Concepts.Storage.GeneralSSD](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#Concepts.Storage.GeneralSSD)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0018."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q036",
+    "exam_id": "saa-e08",
+    "bank_index": 491,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 18,
+    "topic": "Amazon RDS storage configuration and General Purpose SSD (gp3)",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company is moving a small transactional MySQL database from self-managed Amazon EC2 instances to Amazon RDS for MySQL. The database requires 60 GiB of storage and approximately 1,500 IOPS. The selected RDS instance class already meets all CPU and memory requirements. Which storage configuration provides the required capacity and performance at the lowest cost?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Provision 500 GiB of General Purpose SSD (gp2) storage for the RDS instance."
+        },
+        {
+          "id": "B",
+          "text": "Provision 60 GiB of Provisioned IOPS SSD storage with 1,500 IOPS for the RDS instance."
+        },
+        {
+          "id": "C",
+          "text": "Provision 60 GiB of General Purpose SSD (gp3) storage for the RDS instance."
+        },
+        {
+          "id": "D",
+          "text": "Provision 500 GiB of magnetic storage for the RDS instance."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "C"
+    ],
+    "feedback": {
+      "summary": "General Purpose SSD gp3 includes 3,000 IOPS independently of the allocated storage size, so it meets the required IOPS while allocating only the needed capacity.",
+      "incorrect_options": "gp2 storage must be overprovisioned to increase baseline IOPS. Provisioned IOPS SSD is unnecessary for this IOPS level and costs more, while magnetic storage does not provide configurable IOPS.",
+      "key_clue": "The database needs relatively low IOPS, and gp3 provides 3,000 included IOPS without increasing storage capacity."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#Concepts.Storage](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#Concepts.Storage)",
+      "[https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html)",
+      "[https://aws.amazon.com/ebs/pricing/](https://aws.amazon.com/ebs/pricing/)",
+      "[https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#Concepts.Storage.GeneralSSD](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html#Concepts.Storage.GeneralSSD)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0018."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q037",
+    "exam_id": "saa-e08",
+    "bank_index": 492,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 19,
+    "topic": "Amazon EFS shared NFSv4 file storage",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company has two applications. The applications are each deployed on an Amazon EC2 instance. Each EC2 instances is in its own VPC. Both VPCs are placed in the same AWS Region and are peered to one another. The applications share files through an Amazon S3 bucket. Each application connects privately to the S3 bucket by using VPC interface endpoints. The company wants to use only fully managed services. The company wants to change the file sharing to implement the same permission model using an NFSv4 protocol for the file system. Which solution will meet these requirements?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Deploy an Amazon FSx for Windows File Server file system. Mount the file system to both EC2 instances."
+        },
+        {
+          "id": "B",
+          "text": "Configure a new Amazon Elastic Block Store (Amazon EBS) volume in one of the two VPCs. Attach the volume to both EC2 instances."
+        },
+        {
+          "id": "C",
+          "text": "Add an Amazon S3 File Gateway in front of the S3 bucket. Attach the gateway to both EC2 instances."
+        },
+        {
+          "id": "D",
+          "text": "Create an Amazon Elastic File System (Amazon EFS) file system. Mount the file system to both EC2 instances."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "D"
+    ],
+    "feedback": {
+      "summary": "Amazon EFS is a fully managed shared file system that supports NFSv4 and can be mounted concurrently by multiple EC2 instances.",
+      "incorrect_options": "FSx for Windows File Server uses SMB rather than NFSv4. EBS is block storage and is not a shared NFS file system across VPCs, while S3 File Gateway is a hybrid appliance for accessing Amazon S3.",
+      "key_clue": "The workloads need a fully managed shared file system that uses NFSv4."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/fsx/latest/WindowsGuide/supported-fsx-clients.html#access-methods](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/supported-fsx-clients.html#access-methods)",
+      "[https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html#fsx-access-shares](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html#fsx-access-shares)",
+      "[https://docs.aws.amazon.com/fsx/latest/WindowsGuide/aws-ad-integration-fsxW.html](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/aws-ad-integration-fsxW.html)",
+      "[https://aws.amazon.com/efs/when-to-choose-efs/](https://aws.amazon.com/efs/when-to-choose-efs/)",
+      "[https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes-multi.html](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes-multi.html)",
+      "[https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html](https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html)",
+      "[https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html](https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0019."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q038",
+    "exam_id": "saa-e08",
+    "bank_index": 493,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 19,
+    "topic": "Amazon EFS shared NFSv4 file storage",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A research company has Linux workloads on Amazon EC2 instances in two peered VPCs in the same AWS Region. The workloads need to read and write the same shared files through a fully managed file system. The file system must support the NFSv4 protocol and standard file permissions. Which solution should a solutions architect recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Create an Amazon EFS file system, configure mount targets in the required VPCs, and mount the file system from both EC2 instances."
+        },
+        {
+          "id": "B",
+          "text": "Create an Amazon FSx for Windows File Server file system and mount it from both EC2 instances by using SMB."
+        },
+        {
+          "id": "C",
+          "text": "Create an Amazon EBS volume and use Multi-Attach to connect the same volume to both EC2 instances."
+        },
+        {
+          "id": "D",
+          "text": "Deploy an Amazon S3 File Gateway and attach the gateway directly to both EC2 instances."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "Amazon EFS is a fully managed shared file system that supports NFSv4 and can be mounted concurrently by multiple EC2 instances.",
+      "incorrect_options": "FSx for Windows File Server uses SMB rather than NFSv4. EBS is block storage and is not a shared NFS file system across VPCs, while S3 File Gateway is a hybrid appliance for accessing Amazon S3.",
+      "key_clue": "The workloads need a fully managed shared file system that uses NFSv4."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/fsx/latest/WindowsGuide/supported-fsx-clients.html#access-methods](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/supported-fsx-clients.html#access-methods)",
+      "[https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html#fsx-access-shares](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/what-is.html#fsx-access-shares)",
+      "[https://docs.aws.amazon.com/fsx/latest/WindowsGuide/aws-ad-integration-fsxW.html](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/aws-ad-integration-fsxW.html)",
+      "[https://aws.amazon.com/efs/when-to-choose-efs/](https://aws.amazon.com/efs/when-to-choose-efs/)",
+      "[https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes-multi.html](https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volumes-multi.html)",
+      "[https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html](https://docs.aws.amazon.com/filegateway/latest/files3/what-is-file-s3.html)",
+      "[https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html](https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0019."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q039",
+    "exam_id": "saa-e08",
+    "bank_index": 494,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 20,
+    "topic": "AWS WAF protection against SQL injection and cross-site scripting",
+    "exam_domain": "cost-optimized-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A company runs its website on Amazon EC2 instances behind an Application Load Balancer that is configured as the origin for an Amazon CloudFront distribution. The company wants to protect against cross-site scripting and SQL injection attacks. Which approach should a solutions architect recommend to meet these requirements?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Define an AWS Shield Advanced policy in AWS Firewall Manager to block cross-site scripting and SQL injection attacks."
+        },
+        {
+          "id": "B",
+          "text": "Enable AWS Shield Advanced. List the CloudFront distribution as a protected resource."
+        },
+        {
+          "id": "C",
+          "text": "Set up AWS WAF on the CloudFront distribution. Use conditions and rules that block cross-site scripting and SQL injection attacks."
+        },
+        {
+          "id": "D",
+          "text": "Deploy AWS Firewall Manager on the EC2 instances. Create conditions and rules that block cross-site scripting and SQL injection attacks."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "C"
+    ],
+    "feedback": {
+      "summary": "AWS WAF can inspect HTTP(S) requests at CloudFront and use rules to detect and block common SQL injection and cross-site scripting patterns.",
+      "incorrect_options": "AWS Shield Advanced is designed for DDoS protection, not SQL injection or cross-site scripting. AWS Firewall Manager centrally manages security policies and is not installed on EC2 instances.",
+      "key_clue": "SQL injection and cross-site scripting are Layer 7 web application attacks, and CloudFront is the internet-facing entry point."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html](https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html](https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html](https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante fuente del registro saa-0020."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q040",
+    "exam_id": "saa-e08",
+    "bank_index": 495,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 20,
+    "topic": "AWS WAF protection against SQL injection and cross-site scripting",
+    "exam_domain": "cost-optimized-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "A customer portal is delivered through an Amazon CloudFront distribution that forwards requests to an Application Load Balancer. Security testing identifies a risk of malicious SQL statements and injected browser scripts in HTTP requests. The company needs an AWS service that inspects web traffic at the edge and blocks these application-layer attacks. Which solution should a solutions architect recommend?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Associate an AWS WAF web ACL with the CloudFront distribution and configure rules to detect and block SQL injection and cross-site scripting patterns."
+        },
+        {
+          "id": "B",
+          "text": "Enable AWS Shield Advanced for the CloudFront distribution to block SQL injection and cross-site scripting attacks."
+        },
+        {
+          "id": "C",
+          "text": "Install AWS Firewall Manager agents on the Amazon EC2 instances and configure the agents to inspect HTTP requests."
+        },
+        {
+          "id": "D",
+          "text": "Create an AWS Shield Advanced policy in AWS Firewall Manager to filter malicious SQL statements and scripts."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "AWS WAF can inspect HTTP(S) requests at CloudFront and use rules to detect and block common SQL injection and cross-site scripting patterns.",
+      "incorrect_options": "AWS Shield Advanced is designed for DDoS protection, not SQL injection or cross-site scripting. AWS Firewall Manager centrally manages security policies and is not installed on EC2 instances.",
+      "key_clue": "SQL injection and cross-site scripting are Layer 7 web application attacks, and CloudFront is the internet-facing entry point."
+    },
+    "metadata": {
+      "primary_services": [],
+      "mentioned_services": [],
+      "concepts": [],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html](https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html](https://docs.aws.amazon.com/waf/latest/developerguide/shield-chapter.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html)",
+      "[https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html](https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html)"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0020."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q041",
+    "exam_id": "saa-e08",
+    "bank_index": 496,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Seguridad",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Una empresa debe conservar expedientes inmutables durante siete años incluso frente a administradores. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Activar S3 Object Lock en modo compliance y configurar retención."
+        },
+        {
+          "id": "B",
+          "text": "Usar solo una ACL privada."
+        },
+        {
+          "id": "C",
+          "text": "Copiar objetos a EBS cada noche."
+        },
+        {
+          "id": "D",
+          "text": "Habilitar solo el versionado."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Una empresa debe conservar expedientes inmutables durante siete años incluso frente a administradores."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-s3",
+        "aws-kms"
+      ],
+      "mentioned_services": [
+        "amazon-s3",
+        "aws-kms"
+      ],
+      "concepts": [
+        "object-storage",
+        "encryption-at-rest"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0021."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q042",
+    "exam_id": "saa-e08",
+    "bank_index": 497,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Seguridad",
+    "exam_domain": "secure-architectures",
+    "select_count": 2,
+    "generated_question": {
+      "scenario": "Un rol de otra cuenta debe leer objetos SSE-KMS sin hacer público el bucket. ¿Qué DOS configuraciones son necesarias? ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Conceder al rol lectura en la política del bucket."
+        },
+        {
+          "id": "B",
+          "text": "Autorizar al rol en la política de la clave KMS."
+        },
+        {
+          "id": "C",
+          "text": "Habilitar acceso público."
+        },
+        {
+          "id": "D",
+          "text": "Guardar la clave en el rol."
+        },
+        {
+          "id": "E",
+          "text": "Usar una ACL pública."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A",
+      "B"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Un rol de otra cuenta debe leer objetos SSE-KMS sin hacer público el bucket. ¿Qué DOS configuraciones son necesarias?"
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-s3",
+        "aws-kms"
+      ],
+      "mentioned_services": [
+        "amazon-s3",
+        "aws-kms"
+      ],
+      "concepts": [
+        "cross-account-access",
+        "key-management",
+        "encryption-at-rest"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0022."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q043",
+    "exam_id": "saa-e08",
+    "bank_index": 498,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Seguridad",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Una aplicación debe obtener y rotar credenciales de RDS sin secretos en el código. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar Secrets Manager con rotación y acceso del rol de ejecución."
+        },
+        {
+          "id": "B",
+          "text": "Guardar la contraseña en variables sin rotación."
+        },
+        {
+          "id": "C",
+          "text": "Usar una clave pública como contraseña."
+        },
+        {
+          "id": "D",
+          "text": "Crear un usuario IAM permanente."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Una aplicación debe obtener y rotar credenciales de RDS sin secretos en el código."
+    },
+    "metadata": {
+      "primary_services": [
+        "aws-secrets-manager"
+      ],
+      "mentioned_services": [
+        "aws-secrets-manager"
+      ],
+      "concepts": [
+        "managed-database",
+        "key-management"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/secretsmanager/latest/userguide/intro.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0023."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q044",
+    "exam_id": "saa-e08",
+    "bank_index": 499,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Seguridad",
+    "exam_domain": "secure-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "La organización quiere impedir que una cuenta miembro desactive un control, incluso con permisos administrativos locales. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Aplicar una SCP con una denegación desde Organizations."
+        },
+        {
+          "id": "B",
+          "text": "Crear un grupo IAM de solo lectura."
+        },
+        {
+          "id": "C",
+          "text": "Añadir una etiqueta al recurso."
+        },
+        {
+          "id": "D",
+          "text": "Configurar una alarma de CloudWatch."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "La organización quiere impedir que una cuenta miembro desactive un control, incluso con permisos administrativos locales."
+    },
+    "metadata": {
+      "primary_services": [
+        "aws-organizations"
+      ],
+      "mentioned_services": [
+        "aws-organizations"
+      ],
+      "concepts": [
+        "iam-permissions-boundaries"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0024."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q045",
+    "exam_id": "saa-e08",
+    "bank_index": 500,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Seguridad",
+    "exam_domain": "secure-architectures",
+    "select_count": 2,
+    "generated_question": {
+      "scenario": "Suscriptores necesitan acceso temporal a archivos mediante CloudFront y el bucket no debe aceptar acceso directo. ¿Qué DOS opciones forman la solución? ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar cookies firmadas de CloudFront."
+        },
+        {
+          "id": "B",
+          "text": "Usar OAC y restringir la política del bucket a la distribución."
+        },
+        {
+          "id": "C",
+          "text": "Publicar el bucket anónimamente."
+        },
+        {
+          "id": "D",
+          "text": "Asignar una Elastic IP al bucket."
+        },
+        {
+          "id": "E",
+          "text": "Usar una ACL pública."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A",
+      "B"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Suscriptores necesitan acceso temporal a archivos mediante CloudFront y el bucket no debe aceptar acceso directo. ¿Qué DOS opciones forman la solución?"
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-cloudfront",
+        "amazon-s3"
+      ],
+      "mentioned_services": [
+        "amazon-cloudfront",
+        "amazon-s3"
+      ],
+      "concepts": [
+        "content-delivery",
+        "edge-caching"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0025."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q046",
+    "exam_id": "saa-e08",
+    "bank_index": 501,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Resiliencia",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Una base RDS MySQL debe conmutar automáticamente ante la caída de una zona y no necesita escalar lecturas. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Desplegar RDS en Multi-AZ."
+        },
+        {
+          "id": "B",
+          "text": "Crear una read replica en la misma zona."
+        },
+        {
+          "id": "C",
+          "text": "Usar DynamoDB."
+        },
+        {
+          "id": "D",
+          "text": "Aumentar el tamaño de la instancia."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Una base RDS MySQL debe conmutar automáticamente ante la caída de una zona y no necesita escalar lecturas."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-rds"
+      ],
+      "mentioned_services": [
+        "amazon-rds"
+      ],
+      "concepts": [
+        "multi-az",
+        "database-high-availability"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZ.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0026."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q047",
+    "exam_id": "saa-e08",
+    "bank_index": 502,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Resiliencia",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Mensajes problemáticos deben investigarse tras un número limitado de reintentos. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Configurar una DLQ y una redrive policy con maxReceiveCount."
+        },
+        {
+          "id": "B",
+          "text": "Eliminar el mensaje al primer error."
+        },
+        {
+          "id": "C",
+          "text": "Usar FIFO sin consumidor."
+        },
+        {
+          "id": "D",
+          "text": "Aumentar indefinidamente el visibility timeout."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Mensajes problemáticos deben investigarse tras un número limitado de reintentos."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-sqs"
+      ],
+      "mentioned_services": [
+        "amazon-sqs"
+      ],
+      "concepts": [
+        "asynchronous-messaging",
+        "decoupling"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0027."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q048",
+    "exam_id": "saa-e08",
+    "bank_index": 503,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Resiliencia",
+    "exam_domain": "resilient-architectures",
+    "select_count": 2,
+    "generated_question": {
+      "scenario": "Facturación debe mantener el orden por cliente y tolerar reentregas sin cobrar dos veces. ¿Qué DOS decisiones son necesarias? ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar SQS FIFO con MessageGroupId por cliente."
+        },
+        {
+          "id": "B",
+          "text": "Hacer idempotente al consumidor."
+        },
+        {
+          "id": "C",
+          "text": "Usar una cola estándar sin deduplicación."
+        },
+        {
+          "id": "D",
+          "text": "No guardar el identificador de operación."
+        },
+        {
+          "id": "E",
+          "text": "Enviar todos los clientes al mismo grupo sin control."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A",
+      "B"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Facturación debe mantener el orden por cliente y tolerar reentregas sin cobrar dos veces. ¿Qué DOS decisiones son necesarias?"
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-sqs"
+      ],
+      "mentioned_services": [
+        "amazon-sqs"
+      ],
+      "concepts": [
+        "message-ordering"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0028."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q049",
+    "exam_id": "saa-e08",
+    "bank_index": 504,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Resiliencia",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Facturación y logística deben consumir cada evento por separado con reintentos independientes. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Publicar en SNS y suscribir una cola SQS por consumidor."
+        },
+        {
+          "id": "B",
+          "text": "Usar una única cola compartida."
+        },
+        {
+          "id": "C",
+          "text": "Invocar directamente una Lambda."
+        },
+        {
+          "id": "D",
+          "text": "Guardar eventos en EBS."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Facturación y logística deben consumir cada evento por separado con reintentos independientes."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-sns",
+        "amazon-sqs"
+      ],
+      "mentioned_services": [
+        "amazon-sns",
+        "amazon-sqs"
+      ],
+      "concepts": [
+        "event-driven",
+        "decoupling"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/sns/latest/dg/sns-sqs-as-subscriber.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0029."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q050",
+    "exam_id": "saa-e08",
+    "bank_index": 505,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Resiliencia",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Un sitio secundario ya operativo debe recibir tráfico cuando falle el principal mediante DNS. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Configurar Route 53 failover con health checks y TTL adecuado."
+        },
+        {
+          "id": "B",
+          "text": "Usar round robin sin comprobaciones."
+        },
+        {
+          "id": "C",
+          "text": "Cambiar manualmente servidores de nombres."
+        },
+        {
+          "id": "D",
+          "text": "Usar CloudFront sin origen secundario."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Un sitio secundario ya operativo debe recibir tráfico cuando falle el principal mediante DNS."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-route-53"
+      ],
+      "mentioned_services": [
+        "amazon-route-53"
+      ],
+      "concepts": [
+        "fault-tolerance",
+        "rto"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-failover.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0030."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q051",
+    "exam_id": "saa-e08",
+    "bank_index": 506,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Resiliencia",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Un flujo de pedidos necesita pasos secuenciales, reintentos y compensación ante errores. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar Step Functions con Retry y Catch."
+        },
+        {
+          "id": "B",
+          "text": "Encadenar Lambdas con esperas fijas."
+        },
+        {
+          "id": "C",
+          "text": "Usar solo CloudWatch."
+        },
+        {
+          "id": "D",
+          "text": "Enviar pasos a una cola sin estado."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Un flujo de pedidos necesita pasos secuenciales, reintentos y compensación ante errores."
+    },
+    "metadata": {
+      "primary_services": [
+        "aws-step-functions"
+      ],
+      "mentioned_services": [
+        "aws-step-functions"
+      ],
+      "concepts": [
+        "event-driven"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/step-functions/latest/dg/concepts-error-handling.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0031."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q052",
+    "exam_id": "saa-e08",
+    "bank_index": 507,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Resiliencia",
+    "exam_domain": "resilient-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Una tabla DynamoDB sufrió borrados accidentales y debe recuperarse al instante anterior al incidente. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar PITR, restaurar a una tabla nueva y actualizar el acceso."
+        },
+        {
+          "id": "B",
+          "text": "Recrear desde el último export manual."
+        },
+        {
+          "id": "C",
+          "text": "Usar una read replica de RDS."
+        },
+        {
+          "id": "D",
+          "text": "Activar TTL."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Una tabla DynamoDB sufrió borrados accidentales y debe recuperarse al instante anterior al incidente."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-dynamodb"
+      ],
+      "mentioned_services": [
+        "amazon-dynamodb"
+      ],
+      "concepts": [
+        "restore"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/PointInTimeRecovery.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0032."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q053",
+    "exam_id": "saa-e08",
+    "bank_index": 508,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Rendimiento",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Muchas consultas de informes saturan una RDS MySQL y se admite cierto retraso de datos. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Crear read replicas y dirigir lecturas a sus endpoints."
+        },
+        {
+          "id": "B",
+          "text": "Activar Multi-AZ como único escalado."
+        },
+        {
+          "id": "C",
+          "text": "Guardar todo en S3."
+        },
+        {
+          "id": "D",
+          "text": "Usar una Elastic IP para duplicar la instancia."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Muchas consultas de informes saturan una RDS MySQL y se admite cierto retraso de datos."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-rds"
+      ],
+      "mentioned_services": [
+        "amazon-rds"
+      ],
+      "concepts": [
+        "read-scaling",
+        "database-read-replicas"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0033."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q054",
+    "exam_id": "saa-e08",
+    "bank_index": 509,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Rendimiento",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 2,
+    "generated_question": {
+      "scenario": "DynamoDB debe consultar por cliente y fecha y también por estado. ¿Qué DOS elementos debe incluir el diseño? ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Una clave compuesta para cliente y fecha."
+        },
+        {
+          "id": "B",
+          "text": "Un GSI para el acceso por estado."
+        },
+        {
+          "id": "C",
+          "text": "Una única partición para todo."
+        },
+        {
+          "id": "D",
+          "text": "Escanear para cada consulta."
+        },
+        {
+          "id": "E",
+          "text": "Usar EBS como índice."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A",
+      "B"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "DynamoDB debe consultar por cliente y fecha y también por estado. ¿Qué DOS elementos debe incluir el diseño?"
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-dynamodb"
+      ],
+      "mentioned_services": [
+        "amazon-dynamodb"
+      ],
+      "concepts": [
+        "managed-database"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0034."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q055",
+    "exam_id": "saa-e08",
+    "bank_index": 510,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Rendimiento",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Analítica de telemetría debe reproducir eventos y permitir consumidores independientes. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar Kinesis Data Streams con retención y consumidores configurados."
+        },
+        {
+          "id": "B",
+          "text": "Enviar solo a SNS."
+        },
+        {
+          "id": "C",
+          "text": "Sobrescribir un objeto S3 por evento."
+        },
+        {
+          "id": "D",
+          "text": "Usar una cola FIFO para todos."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Analítica de telemetría debe reproducir eventos y permitir consumidores independientes."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-kinesis-data-streams"
+      ],
+      "mentioned_services": [
+        "amazon-kinesis-data-streams"
+      ],
+      "concepts": [
+        "stream-processing",
+        "real-time-processing"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/streams/latest/dev/introduction.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0035."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q056",
+    "exam_id": "saa-e08",
+    "bank_index": 511,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Rendimiento",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Una aplicación necesita sesiones compartidas de baja latencia que sobrevivan a la pérdida de un nodo. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar ElastiCache Redis o Valkey con réplicas y failover Multi-AZ."
+        },
+        {
+          "id": "B",
+          "text": "Usar instance store compartido."
+        },
+        {
+          "id": "C",
+          "text": "Guardar sesiones solo en memoria local."
+        },
+        {
+          "id": "D",
+          "text": "Usar S3 como almacén sin caché."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Una aplicación necesita sesiones compartidas de baja latencia que sobrevivan a la pérdida de un nodo."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-elasticache"
+      ],
+      "mentioned_services": [
+        "amazon-elasticache"
+      ],
+      "concepts": [
+        "caching",
+        "fault-tolerance"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Replication.Redis.Groups.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0036."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q057",
+    "exam_id": "saa-e08",
+    "bank_index": 512,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Rendimiento",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Una migración relacional debe reducir la ventana de indisponibilidad. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar DMS con carga completa y CDC y hacer un corte final breve."
+        },
+        {
+          "id": "B",
+          "text": "Exportar e importar durante el corte."
+        },
+        {
+          "id": "C",
+          "text": "Usar una read replica incompatible."
+        },
+        {
+          "id": "D",
+          "text": "Copiar archivos con S3 Sync."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Una migración relacional debe reducir la ventana de indisponibilidad."
+    },
+    "metadata": {
+      "primary_services": [
+        "aws-database-migration-service"
+      ],
+      "mentioned_services": [
+        "aws-database-migration-service"
+      ],
+      "concepts": [
+        "data-migration"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0037."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q058",
+    "exam_id": "saa-e08",
+    "bank_index": 513,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Rendimiento",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Millones de archivos NFS deben copiarse y sincronizarse desde las instalaciones a EFS. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar DataSync con agente y conectividad adecuada."
+        },
+        {
+          "id": "B",
+          "text": "Usar CloudFront como NFS."
+        },
+        {
+          "id": "C",
+          "text": "Copiar cada archivo con Lambda."
+        },
+        {
+          "id": "D",
+          "text": "Montar EFS mediante URL pública."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Millones de archivos NFS deben copiarse y sincronizarse desde las instalaciones a EFS."
+    },
+    "metadata": {
+      "primary_services": [
+        "aws-datasync"
+      ],
+      "mentioned_services": [
+        "aws-datasync"
+      ],
+      "concepts": [
+        "data-migration"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/datasync/latest/userguide/what-is-datasync.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0038."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q059",
+    "exam_id": "saa-e08",
+    "bank_index": 514,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Rendimiento",
+    "exam_domain": "high-performing-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Una API global TCP/UDP necesita IP estática y entrada por la red global a endpoints regionales. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar Global Accelerator."
+        },
+        {
+          "id": "B",
+          "text": "Usar CloudFront como caché HTTP."
+        },
+        {
+          "id": "C",
+          "text": "Usar un registro MX."
+        },
+        {
+          "id": "D",
+          "text": "Usar S3 Transfer Acceleration."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Una API global TCP/UDP necesita IP estática y entrada por la red global a endpoints regionales."
+    },
+    "metadata": {
+      "primary_services": [
+        "aws-global-accelerator"
+      ],
+      "mentioned_services": [
+        "aws-global-accelerator"
+      ],
+      "concepts": [
+        "multi-region"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0039."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q060",
+    "exam_id": "saa-e08",
+    "bank_index": 515,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Costes",
+    "exam_domain": "cost-optimized-architectures",
+    "select_count": 2,
+    "generated_question": {
+      "scenario": "Un ETL consulta grandes datasets S3 y suele escanear información irrelevante. ¿Qué DOS cambios reducen el coste? ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Convertir datos a Parquet comprimido."
+        },
+        {
+          "id": "B",
+          "text": "Particionar por campos usados en filtros."
+        },
+        {
+          "id": "C",
+          "text": "Guardar copia sin comprimir."
+        },
+        {
+          "id": "D",
+          "text": "Usar EBS permanentemente."
+        },
+        {
+          "id": "E",
+          "text": "Escanear todas las columnas."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A",
+      "B"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Un ETL consulta grandes datasets S3 y suele escanear información irrelevante. ¿Qué DOS cambios reducen el coste?"
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-athena"
+      ],
+      "mentioned_services": [
+        "amazon-athena"
+      ],
+      "concepts": [
+        "performance-optimization",
+        "cost-optimization"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/athena/latest/ug/columnar-storage.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0040."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q061",
+    "exam_id": "saa-e08",
+    "bank_index": 516,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Costes",
+    "exam_domain": "cost-optimized-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Un lote interrumpible puede reanudarse y debe minimizar el coste de EC2. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar Spot con checkpoints y diversidad de tipos o zonas."
+        },
+        {
+          "id": "B",
+          "text": "Usar una On-Demand única sin checkpoints."
+        },
+        {
+          "id": "C",
+          "text": "Usar reserva zonal fija."
+        },
+        {
+          "id": "D",
+          "text": "Ejecutar en una Elastic IP."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Un lote interrumpible puede reanudarse y debe minimizar el coste de EC2."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-ec2"
+      ],
+      "mentioned_services": [
+        "amazon-ec2"
+      ],
+      "concepts": [
+        "spot-instances",
+        "compute-cost-optimization"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0041."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q062",
+    "exam_id": "saa-e08",
+    "bank_index": 517,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Costes",
+    "exam_domain": "cost-optimized-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Una carga estable tendrá consumo previsible pero cambiará de familias y regiones. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar un Compute Savings Plan para el compromiso base."
+        },
+        {
+          "id": "B",
+          "text": "Comprar reserva de capacidad para una AZ."
+        },
+        {
+          "id": "C",
+          "text": "Usar solo Spot."
+        },
+        {
+          "id": "D",
+          "text": "Crear una reserva por cada familia futura."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Una carga estable tendrá consumo previsible pero cambiará de familias y regiones."
+    },
+    "metadata": {
+      "primary_services": [
+        "aws-savings-plans"
+      ],
+      "mentioned_services": [
+        "aws-savings-plans"
+      ],
+      "concepts": [
+        "reserved-capacity",
+        "cost-optimization"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/savingsplans/latest/userguide/what-is-savings-plans.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0042."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q063",
+    "exam_id": "saa-e08",
+    "bank_index": 518,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Costes",
+    "exam_domain": "cost-optimized-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Instancias EC2 privadas acceden intensamente a S3 regional a través de NAT. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Crear un gateway endpoint para S3 con rutas y políticas adecuadas."
+        },
+        {
+          "id": "B",
+          "text": "Añadir NAT gateways sin cambiar rutas."
+        },
+        {
+          "id": "C",
+          "text": "Asignar IP pública."
+        },
+        {
+          "id": "D",
+          "text": "Usar Direct Connect."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Instancias EC2 privadas acceden intensamente a S3 regional a través de NAT."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-s3"
+      ],
+      "mentioned_services": [
+        "amazon-s3"
+      ],
+      "concepts": [
+        "cost-optimization"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/vpc/latest/privatelink/vpc-endpoints-s3.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0043."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q064",
+    "exam_id": "saa-e08",
+    "bank_index": 519,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Costes",
+    "exam_domain": "cost-optimized-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Los patrones de acceso a objetos son desconocidos y deben evitar transiciones manuales. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Usar S3 Intelligent-Tiering y considerar el tamaño mínimo rentable."
+        },
+        {
+          "id": "B",
+          "text": "Mover todo diariamente a Deep Archive."
+        },
+        {
+          "id": "C",
+          "text": "Usar EBS para decidir la clase."
+        },
+        {
+          "id": "D",
+          "text": "Configurar una transición manual mensual."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Los patrones de acceso a objetos son desconocidos y deben evitar transiciones manuales."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-s3"
+      ],
+      "mentioned_services": [
+        "amazon-s3"
+      ],
+      "concepts": [
+        "storage-lifecycle"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0044."
+  },
+  {
+    "schema_version": "2.3",
+    "id": "saa-e08-q065",
+    "exam_id": "saa-e08",
+    "bank_index": 520,
+    "exam": "AWS Certified Solutions Architect - Associate",
+    "source_question_number": 0,
+    "topic": "Costes",
+    "exam_domain": "cost-optimized-architectures",
+    "select_count": 1,
+    "generated_question": {
+      "scenario": "Consumidores SQS hacen muchas consultas vacías durante horas de poca actividad. ¿Qué solución recomienda un arquitecto de soluciones?",
+      "options": [
+        {
+          "id": "A",
+          "text": "Activar long polling y ajustar WaitTimeSeconds."
+        },
+        {
+          "id": "B",
+          "text": "Reducir visibility timeout a cero."
+        },
+        {
+          "id": "C",
+          "text": "Cambiar siempre a FIFO."
+        },
+        {
+          "id": "D",
+          "text": "Usar polling corto más frecuente."
+        }
+      ]
+    },
+    "generated_correct_answers": [
+      "A"
+    ],
+    "feedback": {
+      "summary": "La opción correcta satisface el requisito decisivo del escenario con el servicio administrado apropiado.",
+      "incorrect_options": "Las demás opciones no satisfacen simultáneamente los requisitos indicados.",
+      "key_clue": "Consumidores SQS hacen muchas consultas vacías durante horas de poca actividad."
+    },
+    "metadata": {
+      "primary_services": [
+        "amazon-sqs"
+      ],
+      "mentioned_services": [
+        "amazon-sqs"
+      ],
+      "concepts": [
+        "asynchronous-messaging"
+      ],
+      "architecture_patterns": [],
+      "difficulty": "hard",
+      "question_style": "scenario"
+    },
+    "references": [
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html"
+    ],
+    "source_image": null,
+    "notes": "Variante generada del registro saa-0045."
+  }
+]

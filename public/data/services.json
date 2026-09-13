@@ -1,0 +1,677 @@
+[
+  {
+    "id": "amazon-ec2",
+    "name": "Amazon EC2",
+    "short_name": "EC2",
+    "category": "Compute",
+    "icon_key": "amazon-ec2",
+    "question_count": 99,
+    "mentioned_question_count": 195
+  },
+  {
+    "id": "amazon-s3",
+    "name": "Amazon S3",
+    "short_name": "S3",
+    "category": "Storage",
+    "icon_key": "amazon-s3",
+    "question_count": 105,
+    "mentioned_question_count": 152
+  },
+  {
+    "id": "amazon-vpc",
+    "name": "Amazon VPC",
+    "short_name": "VPC",
+    "category": "Networking and Content Delivery",
+    "icon_key": "amazon-vpc",
+    "question_count": 26,
+    "mentioned_question_count": 72
+  },
+  {
+    "id": "elastic-load-balancing",
+    "name": "Elastic Load Balancing",
+    "short_name": "ELB/ALB/NLB",
+    "category": "Networking and Content Delivery",
+    "icon_key": "elastic-load-balancing",
+    "question_count": 42,
+    "mentioned_question_count": 66
+  },
+  {
+    "id": "aws-lambda",
+    "name": "AWS Lambda",
+    "short_name": "Lambda",
+    "category": "Compute",
+    "icon_key": "aws-lambda",
+    "question_count": 21,
+    "mentioned_question_count": 56
+  },
+  {
+    "id": "amazon-rds",
+    "name": "Amazon RDS",
+    "short_name": "RDS",
+    "category": "Database",
+    "icon_key": "amazon-rds",
+    "question_count": 31,
+    "mentioned_question_count": 55
+  },
+  {
+    "id": "amazon-ec2-auto-scaling",
+    "name": "Amazon EC2 Auto Scaling",
+    "short_name": "Auto Scaling",
+    "category": "Compute",
+    "icon_key": "amazon-ec2-auto-scaling",
+    "question_count": 27,
+    "mentioned_question_count": 46
+  },
+  {
+    "id": "amazon-dynamodb",
+    "name": "Amazon DynamoDB",
+    "short_name": "DynamoDB",
+    "category": "Database",
+    "icon_key": "amazon-dynamodb",
+    "question_count": 26,
+    "mentioned_question_count": 47
+  },
+  {
+    "id": "amazon-ebs",
+    "name": "Amazon EBS",
+    "short_name": "EBS",
+    "category": "Storage",
+    "icon_key": "amazon-ebs",
+    "question_count": 22,
+    "mentioned_question_count": 43
+  },
+  {
+    "id": "aws-iam",
+    "name": "AWS IAM",
+    "short_name": "IAM",
+    "category": "Security, Identity, and Compliance",
+    "icon_key": "aws-iam",
+    "question_count": 18,
+    "mentioned_question_count": 42
+  },
+  {
+    "id": "amazon-sqs",
+    "name": "Amazon SQS",
+    "short_name": "SQS",
+    "category": "Application Integration",
+    "icon_key": "amazon-sqs",
+    "question_count": 23,
+    "mentioned_question_count": 42
+  },
+  {
+    "id": "amazon-cloudfront",
+    "name": "Amazon CloudFront",
+    "short_name": "CloudFront",
+    "category": "Networking and Content Delivery",
+    "icon_key": "amazon-cloudfront",
+    "question_count": 22,
+    "mentioned_question_count": 33
+  },
+  {
+    "id": "amazon-kinesis-data-streams",
+    "name": "Amazon Kinesis Data Streams",
+    "short_name": "Kinesis Data Streams",
+    "category": "Analytics",
+    "icon_key": "amazon-kinesis",
+    "question_count": 20,
+    "mentioned_question_count": 32
+  },
+  {
+    "id": "amazon-efs",
+    "name": "Amazon EFS",
+    "short_name": "EFS",
+    "category": "Storage",
+    "icon_key": "amazon-efs",
+    "question_count": 11,
+    "mentioned_question_count": 30
+  },
+  {
+    "id": "amazon-sns",
+    "name": "Amazon SNS",
+    "short_name": "SNS",
+    "category": "Application Integration",
+    "icon_key": "amazon-sns",
+    "question_count": 6,
+    "mentioned_question_count": 27
+  },
+  {
+    "id": "amazon-route-53",
+    "name": "Amazon Route 53",
+    "short_name": "Route 53",
+    "category": "Networking and Content Delivery",
+    "icon_key": "amazon-route-53",
+    "question_count": 14,
+    "mentioned_question_count": 26
+  },
+  {
+    "id": "amazon-aurora",
+    "name": "Amazon Aurora",
+    "short_name": "Aurora",
+    "category": "Database",
+    "icon_key": "amazon-aurora",
+    "question_count": 16,
+    "mentioned_question_count": 24
+  },
+  {
+    "id": "amazon-s3-glacier",
+    "name": "Amazon S3 Glacier",
+    "short_name": "S3 Glacier",
+    "category": "Storage",
+    "icon_key": "amazon-s3",
+    "question_count": 13,
+    "mentioned_question_count": 23
+  },
+  {
+    "id": "amazon-elasticache",
+    "name": "Amazon ElastiCache",
+    "short_name": "ElastiCache",
+    "category": "Database",
+    "icon_key": "amazon-elasticache",
+    "question_count": 8,
+    "mentioned_question_count": 23
+  },
+  {
+    "id": "aws-direct-connect",
+    "name": "AWS Direct Connect",
+    "short_name": "Direct Connect",
+    "category": "Networking and Content Delivery",
+    "icon_key": "aws-direct-connect",
+    "question_count": 8,
+    "mentioned_question_count": 21
+  },
+  {
+    "id": "aws-storage-gateway",
+    "name": "AWS Storage Gateway",
+    "short_name": "Storage Gateway",
+    "category": "Storage",
+    "icon_key": "aws-storage-gateway",
+    "question_count": 9,
+    "mentioned_question_count": 18
+  },
+  {
+    "id": "amazon-cloudwatch",
+    "name": "Amazon CloudWatch",
+    "short_name": "CloudWatch",
+    "category": "Management and Governance",
+    "icon_key": "amazon-cloudwatch",
+    "question_count": 8,
+    "mentioned_question_count": 18
+  },
+  {
+    "id": "amazon-redshift",
+    "name": "Amazon Redshift",
+    "short_name": "Redshift",
+    "category": "Analytics",
+    "icon_key": "amazon-redshift",
+    "question_count": 7,
+    "mentioned_question_count": 17
+  },
+  {
+    "id": "aws-kms",
+    "name": "AWS KMS",
+    "short_name": "KMS",
+    "category": "Security, Identity, and Compliance",
+    "icon_key": "aws-kms",
+    "question_count": 9,
+    "mentioned_question_count": 18
+  },
+  {
+    "id": "aws-site-to-site-vpn",
+    "name": "AWS Site-to-Site VPN",
+    "short_name": "Site-to-Site VPN",
+    "category": "Networking and Content Delivery",
+    "icon_key": "amazon-vpc",
+    "question_count": 8,
+    "mentioned_question_count": 14
+  },
+  {
+    "id": "aws-global-accelerator",
+    "name": "AWS Global Accelerator",
+    "short_name": "Global Accelerator",
+    "category": "Networking and Content Delivery",
+    "icon_key": "aws-global-accelerator",
+    "question_count": 7,
+    "mentioned_question_count": 14
+  },
+  {
+    "id": "aws-snow-family",
+    "name": "AWS Snow Family",
+    "short_name": "Snow Family",
+    "category": "Migration and Transfer",
+    "icon_key": "aws-snow-family",
+    "question_count": 5,
+    "mentioned_question_count": 13
+  },
+  {
+    "id": "amazon-athena",
+    "name": "Amazon Athena",
+    "short_name": "Athena",
+    "category": "Analytics",
+    "icon_key": "amazon-athena",
+    "question_count": 7,
+    "mentioned_question_count": 14
+  },
+  {
+    "id": "aws-glue",
+    "name": "AWS Glue",
+    "short_name": "Glue",
+    "category": "Analytics",
+    "icon_key": "aws-glue",
+    "question_count": 4,
+    "mentioned_question_count": 12
+  },
+  {
+    "id": "amazon-api-gateway",
+    "name": "Amazon API Gateway",
+    "short_name": "API Gateway",
+    "category": "Networking and Content Delivery",
+    "icon_key": "amazon-api-gateway",
+    "question_count": 7,
+    "mentioned_question_count": 12
+  },
+  {
+    "id": "amazon-ecs",
+    "name": "Amazon ECS",
+    "short_name": "ECS",
+    "category": "Compute",
+    "icon_key": "amazon-ecs",
+    "question_count": 8,
+    "mentioned_question_count": 12
+  },
+  {
+    "id": "amazon-emr",
+    "name": "Amazon EMR",
+    "short_name": "EMR",
+    "category": "Analytics",
+    "icon_key": "amazon-emr",
+    "question_count": 2,
+    "mentioned_question_count": 12
+  },
+  {
+    "id": "aws-datasync",
+    "name": "AWS DataSync",
+    "short_name": "DataSync",
+    "category": "Migration and Transfer",
+    "icon_key": "aws-datasync",
+    "question_count": 6,
+    "mentioned_question_count": 12
+  },
+  {
+    "id": "aws-organizations",
+    "name": "AWS Organizations",
+    "short_name": "Organizations",
+    "category": "Management and Governance",
+    "icon_key": "aws-organizations",
+    "question_count": 6,
+    "mentioned_question_count": 12
+  },
+  {
+    "id": "aws-transit-gateway",
+    "name": "AWS Transit Gateway",
+    "short_name": "Transit Gateway",
+    "category": "Networking and Content Delivery",
+    "icon_key": "amazon-vpc",
+    "question_count": 6,
+    "mentioned_question_count": 11
+  },
+  {
+    "id": "aws-waf",
+    "name": "AWS WAF",
+    "short_name": "WAF",
+    "category": "Security, Identity, and Compliance",
+    "icon_key": "aws-waf",
+    "question_count": 9,
+    "mentioned_question_count": 11
+  },
+  {
+    "id": "amazon-dynamodb-accelerator",
+    "name": "Amazon DynamoDB Accelerator (DAX)",
+    "short_name": "DAX",
+    "category": "Database",
+    "icon_key": "amazon-dynamodb",
+    "question_count": 5,
+    "mentioned_question_count": 11
+  },
+  {
+    "id": "amazon-elasticache-for-redis",
+    "name": "Amazon ElastiCache for Redis",
+    "short_name": "ElastiCache Redis",
+    "category": "Database",
+    "icon_key": "amazon-elasticache",
+    "question_count": 6,
+    "mentioned_question_count": 11
+  },
+  {
+    "id": "amazon-fsx-for-lustre",
+    "name": "Amazon FSx for Lustre",
+    "short_name": "FSx for Lustre",
+    "category": "Storage",
+    "icon_key": "amazon-fsx",
+    "question_count": 6,
+    "mentioned_question_count": 11
+  },
+  {
+    "id": "amazon-fsx-for-windows-file-server",
+    "name": "Amazon FSx for Windows File Server",
+    "short_name": "FSx for Windows",
+    "category": "Storage",
+    "icon_key": "amazon-fsx",
+    "question_count": 9,
+    "mentioned_question_count": 11
+  },
+  {
+    "id": "amazon-kinesis-data-firehose",
+    "name": "Amazon Kinesis Data Firehose",
+    "short_name": "Kinesis Data Firehose",
+    "category": "Analytics",
+    "icon_key": "amazon-kinesis",
+    "question_count": 5,
+    "mentioned_question_count": 11
+  },
+  {
+    "id": "amazon-cloudtrail",
+    "name": "Amazon CloudTrail",
+    "short_name": "CloudTrail",
+    "category": "Management and Governance",
+    "icon_key": "amazon-cloudtrail",
+    "question_count": 6,
+    "mentioned_question_count": 10
+  },
+  {
+    "id": "amazon-eventbridge",
+    "name": "Amazon EventBridge",
+    "short_name": "EventBridge",
+    "category": "Application Integration",
+    "icon_key": "amazon-eventbridge",
+    "question_count": 4,
+    "mentioned_question_count": 10
+  },
+  {
+    "id": "aws-config",
+    "name": "AWS Config",
+    "short_name": "Config",
+    "category": "Management and Governance",
+    "icon_key": "aws-config",
+    "question_count": 4,
+    "mentioned_question_count": 8
+  },
+  {
+    "id": "aws-fargate",
+    "name": "AWS Fargate",
+    "short_name": "Fargate",
+    "category": "Compute",
+    "icon_key": "aws-fargate",
+    "question_count": 4,
+    "mentioned_question_count": 8
+  },
+  {
+    "id": "amazon-guardduty",
+    "name": "Amazon GuardDuty",
+    "short_name": "GuardDuty",
+    "category": "Security, Identity, and Compliance",
+    "icon_key": "amazon-guardduty",
+    "question_count": 4,
+    "mentioned_question_count": 7
+  },
+  {
+    "id": "amazon-kinesis-data-analytics",
+    "name": "Amazon Kinesis Data Analytics",
+    "short_name": "Kinesis Data Analytics",
+    "category": "Analytics",
+    "icon_key": "amazon-kinesis",
+    "question_count": 2,
+    "mentioned_question_count": 7
+  },
+  {
+    "id": "aws-cloudformation",
+    "name": "AWS CloudFormation",
+    "short_name": "CloudFormation",
+    "category": "Management and Governance",
+    "icon_key": "aws-cloudformation",
+    "question_count": 3,
+    "mentioned_question_count": 6
+  },
+  {
+    "id": "aws-shield",
+    "name": "AWS Shield",
+    "short_name": "Shield",
+    "category": "Security, Identity, and Compliance",
+    "icon_key": "aws-shield",
+    "question_count": 2,
+    "mentioned_question_count": 6
+  },
+  {
+    "id": "aws-systems-manager",
+    "name": "AWS Systems Manager",
+    "short_name": "Systems Manager",
+    "category": "Management and Governance",
+    "icon_key": "aws-systems-manager",
+    "question_count": 0,
+    "mentioned_question_count": 6
+  },
+  {
+    "id": "aws-trusted-advisor",
+    "name": "AWS Trusted Advisor",
+    "short_name": "Trusted Advisor",
+    "category": "Management and Governance",
+    "icon_key": "aws-trusted-advisor",
+    "question_count": 2,
+    "mentioned_question_count": 6
+  },
+  {
+    "id": "amazon-neptune",
+    "name": "Amazon Neptune",
+    "short_name": "Neptune",
+    "category": "Database",
+    "icon_key": "amazon-neptune",
+    "question_count": 1,
+    "mentioned_question_count": 6
+  },
+  {
+    "id": "aws-database-migration-service",
+    "name": "AWS Database Migration Service",
+    "short_name": "DMS",
+    "category": "Migration and Transfer",
+    "icon_key": "aws-database-migration-service",
+    "question_count": 4,
+    "mentioned_question_count": 6
+  },
+  {
+    "id": "aws-privatelink",
+    "name": "AWS PrivateLink",
+    "short_name": "PrivateLink",
+    "category": "Networking and Content Delivery",
+    "icon_key": "amazon-vpc",
+    "question_count": 1,
+    "mentioned_question_count": 5
+  },
+  {
+    "id": "amazon-documentdb",
+    "name": "Amazon DocumentDB",
+    "short_name": "DocumentDB",
+    "category": "Database",
+    "icon_key": "amazon-documentdb",
+    "question_count": 0,
+    "mentioned_question_count": 5
+  },
+  {
+    "id": "aws-control-tower",
+    "name": "AWS Control Tower",
+    "short_name": "Control Tower",
+    "category": "Management and Governance",
+    "icon_key": "aws-control-tower",
+    "question_count": 2,
+    "mentioned_question_count": 4
+  },
+  {
+    "id": "amazon-cognito",
+    "name": "Amazon Cognito",
+    "short_name": "Cognito",
+    "category": "Security, Identity, and Compliance",
+    "icon_key": "amazon-cognito",
+    "question_count": 3,
+    "mentioned_question_count": 4
+  },
+  {
+    "id": "amazon-quicksight",
+    "name": "Amazon QuickSight",
+    "short_name": "QuickSight",
+    "category": "Analytics",
+    "icon_key": "amazon-quicksight",
+    "question_count": 0,
+    "mentioned_question_count": 4
+  },
+  {
+    "id": "aws-cost-explorer",
+    "name": "AWS Cost Explorer",
+    "short_name": "Cost Explorer",
+    "category": "Cloud Financial Management",
+    "icon_key": "aws-cost-explorer",
+    "question_count": 2,
+    "mentioned_question_count": 3
+  },
+  {
+    "id": "aws-managed-microsoft-ad",
+    "name": "AWS Managed Microsoft AD",
+    "short_name": "Managed Microsoft AD",
+    "category": "Security, Identity, and Compliance",
+    "icon_key": "aws-directory-service",
+    "question_count": 2,
+    "mentioned_question_count": 3
+  },
+  {
+    "id": "aws-resource-access-manager",
+    "name": "AWS Resource Access Manager",
+    "short_name": "RAM",
+    "category": "Management and Governance",
+    "icon_key": "aws-resource-access-manager",
+    "question_count": 1,
+    "mentioned_question_count": 3
+  },
+  {
+    "id": "aws-secrets-manager",
+    "name": "AWS Secrets Manager",
+    "short_name": "Secrets Manager",
+    "category": "Security, Identity, and Compliance",
+    "icon_key": "aws-secrets-manager",
+    "question_count": 3,
+    "mentioned_question_count": 4
+  },
+  {
+    "id": "aws-step-functions",
+    "name": "AWS Step Functions",
+    "short_name": "Step Functions",
+    "category": "Application Integration",
+    "icon_key": "aws-step-functions",
+    "question_count": 1,
+    "mentioned_question_count": 4
+  },
+  {
+    "id": "aws-backup",
+    "name": "AWS Backup",
+    "short_name": "Backup",
+    "category": "Storage",
+    "icon_key": "aws-backup",
+    "question_count": 0,
+    "mentioned_question_count": 2
+  },
+  {
+    "id": "aws-budgets",
+    "name": "AWS Budgets",
+    "short_name": "Budgets",
+    "category": "Cloud Financial Management",
+    "icon_key": "aws-budgets",
+    "question_count": 0,
+    "mentioned_question_count": 2
+  },
+  {
+    "id": "aws-certificate-manager",
+    "name": "AWS Certificate Manager",
+    "short_name": "ACM",
+    "category": "Security, Identity, and Compliance",
+    "icon_key": "aws-certificate-manager",
+    "question_count": 2,
+    "mentioned_question_count": 2
+  },
+  {
+    "id": "amazon-inspector",
+    "name": "Amazon Inspector",
+    "short_name": "Inspector",
+    "category": "Security, Identity, and Compliance",
+    "icon_key": "amazon-inspector",
+    "question_count": 1,
+    "mentioned_question_count": 2
+  },
+  {
+    "id": "amazon-mq",
+    "name": "Amazon MQ",
+    "short_name": "MQ",
+    "category": "Application Integration",
+    "icon_key": "amazon-mq",
+    "question_count": 2,
+    "mentioned_question_count": 2
+  },
+  {
+    "id": "amazon-macie",
+    "name": "Amazon Macie",
+    "short_name": "Macie",
+    "category": "Security, Identity, and Compliance",
+    "icon_key": "amazon-macie",
+    "question_count": 0,
+    "mentioned_question_count": 2
+  },
+  {
+    "id": "aws-application-migration-service",
+    "name": "AWS Application Migration Service",
+    "short_name": "MGN",
+    "category": "Migration and Transfer",
+    "icon_key": "aws-application-migration-service",
+    "question_count": 1,
+    "mentioned_question_count": 1
+  },
+  {
+    "id": "aws-cost-and-usage-report",
+    "name": "AWS Cost and Usage Report",
+    "short_name": "CUR",
+    "category": "Cloud Financial Management",
+    "icon_key": "aws-cost-and-usage-report",
+    "question_count": 0,
+    "mentioned_question_count": 1
+  },
+  {
+    "id": "aws-elastic-beanstalk",
+    "name": "AWS Elastic Beanstalk",
+    "short_name": "Elastic Beanstalk",
+    "category": "Compute",
+    "icon_key": "aws-elastic-beanstalk",
+    "question_count": 0,
+    "mentioned_question_count": 1
+  },
+  {
+    "id": "aws-iam-identity-center",
+    "name": "AWS IAM Identity Center",
+    "short_name": "IAM Identity Center",
+    "category": "Security, Identity, and Compliance",
+    "icon_key": "aws-iam",
+    "question_count": 1,
+    "mentioned_question_count": 1
+  },
+  {
+    "id": "aws-lake-formation",
+    "name": "AWS Lake Formation",
+    "short_name": "Lake Formation",
+    "category": "Analytics",
+    "icon_key": "aws-lake-formation",
+    "question_count": 1,
+    "mentioned_question_count": 1
+  },
+  {
+    "id": "amazon-eks",
+    "name": "Amazon EKS",
+    "short_name": "EKS",
+    "category": "Compute",
+    "icon_key": "amazon-eks",
+    "question_count": 1,
+    "mentioned_question_count": 1
+  }
+]

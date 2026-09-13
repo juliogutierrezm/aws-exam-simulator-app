@@ -1,0 +1,49 @@
+<main class="session page-shell"><div class="session-controls"><button type="button" class="secondary" (click)="exit()">Salir y volver al inicio</button><button type="button" class="discard-control" (click)="discardSession()">Descartar sesión</button></div>
+  @if (question(); as current) {
+    <header class="session-header">
+      <div>
+        <p class="eyebrow">{{ isExam() ? 'MODO EXAMEN' : 'MODO PRÁCTICA' }}</p>
+        <h1>Pregunta {{ quiz.currentIndex() + 1 }} <span>/ {{ session()?.questionIds?.length }}</span></h1>
+        @if (currentServices().length) {
+          <div class="question-services" aria-label="Servicios AWS relacionados">
+            @for (service of currentServices(); track service.id) {
+              <app-aws-service-icon [iconKey]="service.icon_key" [alt]="service.name" [size]="28" />
+              <span>{{ service.short_name }}</span>
+            }
+          </div>
+        }
+      </div>
+      @if (isExam()) { <div class="timer" [class.warning]="isCountdown() && timer.remainingSeconds() < 600" role="timer" aria-live="polite">{{ isCountdown() ? timer.formatRemaining() : (isStopwatch() ? timer.formatElapsed() : 'Sin límite') }}</div> }
+    </header>
+    <div class="progress-line"><span [style.width.%]="((quiz.currentIndex() + 1) / (session()?.questionIds?.length ?? 1)) * 100"></span></div>
+    @if (isExam()) {
+      <section class="exam-toolbar" aria-label="Navegación del examen"><div><strong>{{ answeredCount() }} respondidas</strong><span>{{ unansweredCount() }} sin responder</span></div><button type="button" class="mark-button" [attr.aria-pressed]="isMarked(current.id)" (click)="toggleMarked()">{{ isMarked(current.id) ? 'Quitar marca' : 'Marcar para revisar' }}</button></section>
+      <nav class="question-nav" aria-label="Navegador de preguntas">@for (questionId of session()?.questionIds ?? []; track questionId; let index = $index) { <button type="button" [class.current]="index === quiz.currentIndex()" [class.answered]="isAnswered(questionId)" [class.marked]="isMarked(questionId)" [attr.aria-current]="index === quiz.currentIndex() ? 'step' : null" [attr.aria-label]="'Ir a pregunta ' + (index + 1)" (click)="goTo(index)">{{ index + 1 }}</button> }</nav>
+    }
+    <section class="question-block" [attr.aria-label]="'Pregunta ' + (quiz.currentIndex() + 1)">
+      <div class="question-meta"><span>{{ current.exam_domain }}</span><span>{{ current.select_count > 1 ? 'Selecciona ' + current.select_count + ' respuestas' : 'Selecciona una respuesta' }}</span></div>
+      <p class="scenario">{{ current.generated_question?.scenario || current.source_question?.scenario }}</p>
+      <div class="answer-heading"><h2>Opciones</h2><p class="selection-status" aria-live="polite">{{ current.select_count > 1 ? selectionCount() + ' de ' + current.select_count + ' seleccionadas' : 'Selecciona una respuesta' }}</p></div>
+      <div class="options" [attr.role]="current.select_count > 1 ? 'group' : 'radiogroup'" aria-label="Opciones de respuesta">
+        @for (option of (current.generated_question?.options || current.source_question?.options || []); track option.id; let index = $index) {
+            <button type="button" class="option" [attr.role]="current.select_count > 1 ? 'checkbox' : 'radio'" [attr.aria-checked]="isSelected(option.id)" [class.selected]="isSelected(option.id)" [class.correct]="checked() && isCorrect(option.id)" [class.incorrect]="checked() && isSelected(option.id) && !isCorrect(option.id)" [disabled]="checked() || timer.expired()" (click)="toggle(option.id)">
+            <span class="option-key">{{ 'ABCDEFG'[index] }}</span><span class="option-copy">{{ option.text }}</span>
+            @if (checked() && isCorrect(option.id)) { <span class="option-state">✓ Respuesta correcta</span> }
+            @if (checked() && isSelected(option.id) && !isCorrect(option.id)) { <span class="option-state">✕ Tu selección</span> }
+          </button>
+        }
+      </div>
+      @if (checked() && hasImmediateFeedback() && current.feedback; as feedback) {
+        <aside class="feedback" [class.incorrect]="session()?.answers?.[current.id]?.classification === 'incorrect'" [class.correct]="session()?.answers?.[current.id]?.classification === 'correct'" aria-live="polite">
+          <strong>{{ session()?.answers?.[current.id]?.classification === 'correct' ? '✓ Respuesta correcta' : '✕ Respuesta incorrecta' }}</strong><p>{{ feedback.summary }}</p><p><b>Pista</b><br>{{ feedback.key_clue }}</p><p><b>Por qué las demás no son adecuadas</b><br>{{ feedback.incorrect_options }}</p>@for (reference of current.references || []; track reference) { <a [href]="reference" target="_blank" rel="noopener noreferrer">Referencia AWS ↗</a> }
+        </aside>
+      }
+      <div class="session-actions">
+        @if (isExam() && quiz.currentIndex() > 0) { <button class="secondary" type="button" (click)="previous()">← Anterior</button> }
+        @if (hasImmediateFeedback() && !checked()) { <button class="primary" type="button" [disabled]="!canCheck()" (click)="check()">Comprobar respuesta</button> }
+        @if (hasImmediateFeedback() && checked() && quiz.currentIndex() > 0) { <button class="secondary" type="button" (click)="previous()">← Anterior</button> }
+        @if (checked() || !hasImmediateFeedback()) { <button class="primary" type="button" (click)="next()">{{ quiz.currentIndex() + 1 === session()?.questionIds?.length ? 'Finalizar examen' : 'Siguiente' }} <span aria-hidden="true">→</span></button> }
+      </div>
+    </section>
+  } @else { <p class="empty-session" role="status">No hay una sesión activa. Volviendo al configurador…</p> }
+</main>

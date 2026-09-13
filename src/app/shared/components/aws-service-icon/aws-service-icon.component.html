@@ -1,0 +1,34 @@
+<!-- aws-service-icon.component.html -->
+
+@if (svgUrl()) {
+  <img
+    [src]="svgUrl()"
+    [style.width]="sizeStyle()"
+    [style.height]="sizeStyle()"
+    [alt]="isDecorative() ? '' : alt() || iconKey()"
+    [attr.aria-hidden]="isDecorative() ? 'true' : null"
+    [class]="'aws-service-icon ' + extraClass()"
+    loading="lazy"
+  />
+} @else {
+  <!-- Fallback: neutral placeholder when manifest not loaded or key unknown -->
+  <span
+    class="aws-service-icon aws-service-icon--fallback"
+    [style.width]="sizeStyle()"
+    [style.height]="sizeStyle()"
+    [attr.aria-label]="isDecorative() ? null : (alt() || iconKey())"
+    [attr.aria-hidden]="isDecorative() ? 'true' : null"
+    [attr.title]="iconKey()"
+    role="img"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 48 48"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <rect width="48" height="48" rx="8" fill="#e5e7eb" />
+      <text x="24" y="30" text-anchor="middle" font-size="10" fill="#9ca3af">AWS</text>
+    </svg>
+  </span>
+}

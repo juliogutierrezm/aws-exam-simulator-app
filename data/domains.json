@@ -1,0 +1,22 @@
+[
+  {
+    "id": "high-performing-architectures",
+    "name": "Design High-Performing Architectures",
+    "question_count": 159
+  },
+  {
+    "id": "resilient-architectures",
+    "name": "Design Resilient Architectures",
+    "question_count": 142
+  },
+  {
+    "id": "secure-architectures",
+    "name": "Design Secure Architectures",
+    "question_count": 144
+  },
+  {
+    "id": "cost-optimized-architectures",
+    "name": "Design Cost-Optimized Architectures",
+    "question_count": 75
+  }
+]

@@ -1,0 +1,10 @@
+.dialog-description { color: var(--saa-text); line-height: 1.7; margin: 0; }
+.dialog-actions { display: flex; flex-wrap: wrap; gap: .75rem; width: 100%; padding-top: .75rem; }
+.decision { min-height: 48px; padding: .8rem 1rem; white-space: normal; line-height: 1.4; justify-content: center; }
+.decision.primary { color: var(--saa-bg); background: var(--saa-accent); border-color: var(--saa-accent); }
+.decision.danger { color: #fff; background: #b91c1c; border-color: #b91c1c; }
+.decision.danger-outline { color: var(--saa-danger); border: 1px solid var(--saa-danger); background: transparent; }
+.decision.quiet { color: var(--saa-text-secondary); background: transparent; border-color: transparent; }
+.decision:hover { filter: brightness(.9); text-decoration: underline; }
+.decision:focus-visible { outline: 3px solid var(--saa-focus); outline-offset: 3px; }
+@media(max-width: 640px) { .dialog-actions { flex-direction: column; gap: .75rem; } .decision { width: 100%; } }

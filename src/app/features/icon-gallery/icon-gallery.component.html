@@ -1,0 +1,156 @@
+<!-- icon-gallery.component.html -->
+
+<main class="icon-gallery-page">
+
+  <!-- Header -->
+  <header class="gallery-header">
+    <h1 class="gallery-title">AWS Service Icon Gallery</h1>
+    <p class="gallery-subtitle">
+      Validating dataset + manifest + SVG + Angular + PrimeNG
+    </p>
+  </header>
+
+  <!-- Loading state -->
+  @if (loading()) {
+    <div class="gallery-loading" role="status" aria-label="Loading services">
+      <p-progressSpinner
+        strokeWidth="4"
+        animationDuration="0.8s"
+        aria-hidden="true"
+      />
+      <p>Loading services…</p>
+    </div>
+  }
+
+  <!-- Error state -->
+  @if (error()) {
+    <div class="gallery-error" role="alert">
+      <p-message severity="error" [text]="error()!" />
+    </div>
+  }
+
+  <!-- Content -->
+  @if (!loading() && !error()) {
+
+    <!-- Filters toolbar -->
+    <section class="gallery-filters" aria-label="Filter services">
+      <div class="filter-search">
+        <label for="gallery-search" class="visually-hidden">Search services</label>
+        <span class="p-input-icon-left">
+          <i class="pi pi-search" aria-hidden="true"></i>
+          <input
+            id="gallery-search"
+            type="search"
+            pInputText
+            placeholder="Search by name, ID, category…"
+            [value]="searchQuery()"
+            (input)="onSearchChange($any($event.target).value)"
+            class="filter-search-input"
+            aria-label="Search AWS services"
+            autocomplete="off"
+          />
+        </span>
+      </div>
+
+      <div class="filter-category">
+        <label for="gallery-category" class="visually-hidden">Filter by category</label>
+        <p-select
+          inputId="gallery-category"
+          [options]="categories()"
+          [ngModel]="selectedCategory()"
+          (ngModelChange)="onCategoryChange($event)"
+          optionLabel="label"
+          optionValue="value"
+          placeholder="All Categories"
+          class="filter-category-select"
+          aria-label="Filter by category"
+        />
+      </div>
+
+      @if (searchQuery() || selectedCategory()) {
+        <button
+          type="button"
+          class="filter-clear"
+          (click)="clearFilters()"
+          aria-label="Clear all filters"
+        >
+          <i class="pi pi-times" aria-hidden="true"></i>
+          Clear
+        </button>
+      }
+
+      <span class="filter-count" aria-live="polite" aria-atomic="true">
+        {{ filteredCount() }} of {{ totalCount() }} services
+      </span>
+    </section>
+
+    <!-- Grid -->
+    @if (filteredServices().length === 0) {
+      <div class="gallery-empty" role="status">
+        <i class="pi pi-inbox" aria-hidden="true"></i>
+        <p>No services match your filters.</p>
+        <button type="button" class="p-button p-button-text" (click)="clearFilters()">
+          Clear filters
+        </button>
+      </div>
+    } @else {
+      <ul class="gallery-grid" role="list" aria-label="AWS services">
+        @for (service of filteredServices(); track service.id) {
+          <li class="gallery-card" role="listitem">
+            <div class="card-icon" aria-hidden="true">
+              <app-aws-service-icon
+                [iconKey]="service.icon_key"
+                [size]="64"
+                [alt]="service.name"
+              />
+            </div>
+
+            <div class="card-body">
+              <h2 class="card-name" [title]="service.name">{{ service.name }}</h2>
+              <p class="card-short-name">{{ service.short_name }}</p>
+
+              <div class="card-tags">
+                <p-tag
+                  [value]="service.category"
+                  severity="secondary"
+                  class="card-category-tag"
+                />
+              </div>
+
+              <dl class="card-meta">
+                <div class="meta-item">
+                  <dt>ID</dt>
+                  <dd class="card-id">{{ service.id }}</dd>
+                </div>
+                <div class="meta-item">
+                  <dt>Icon key</dt>
+                  <dd class="card-icon-key">{{ service.icon_key }}</dd>
+                </div>
+                <div class="meta-item">
+                  <dt>Questions</dt>
+                  <dd>
+                    <span
+                      class="meta-badge meta-badge--primary"
+                      [pTooltip]="'Primary subject of ' + service.question_count + ' questions'"
+                      tooltipPosition="top"
+                    >{{ service.question_count }}</span>
+                  </dd>
+                </div>
+                <div class="meta-item">
+                  <dt>Mentions</dt>
+                  <dd>
+                    <span
+                      class="meta-badge meta-badge--secondary"
+                      [pTooltip]="'Mentioned in ' + service.mentioned_question_count + ' questions'"
+                      tooltipPosition="top"
+                    >{{ service.mentioned_question_count }}</span>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </li>
+        }
+      </ul>
+    }
+  }
+</main>
