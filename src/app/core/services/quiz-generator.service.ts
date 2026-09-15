@@ -11,7 +11,8 @@ export class QuizGeneratorService {
         (!config.serviceId || metadata?.primary_services?.includes(config.serviceId)) &&
         (!config.domainId || question.exam_domain === config.domainId) &&
         (!config.examId || question.exam_id === config.examId) &&
-        (!config.conceptId || metadata?.concepts?.includes(config.conceptId))
+        (!config.conceptId || metadata?.concepts?.includes(config.conceptId)) &&
+        (config.selectCount == null || question.select_count === config.selectCount)
       );
     });
 

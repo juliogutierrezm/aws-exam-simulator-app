@@ -1,8 +1,9 @@
 export type QuizMode = 'practice' | 'exam';
 export type ExamTimingMode = 'untimed' | 'stopwatch' | 'countdown';
 export type AnswerClassification = 'correct' | 'incorrect' | 'unanswered';
-export type ThemePreference = 'system' | 'light' | 'dark';
+export type ThemePreference = 'light' | 'dark';
 export type QuizSourceType = 'exam' | 'random-exam' | 'service-practice' | 'domain-practice' | 'random-practice' | 'exam-practice';
+export type SelectCountFilter = 1 | 2 | 3;
 export interface QuizSource { type: QuizSourceType; label: string; }
 
 export const DATASET_VERSION = '2.3' as const;
@@ -14,6 +15,7 @@ export interface QuizConfig {
   domainId?: string;
   examId?: string;
   conceptId?: string;
+  selectCount?: SelectCountFilter | null;
   source?: QuizSource;
   timingMode: ExamTimingMode;
   durationMinutes?: number;

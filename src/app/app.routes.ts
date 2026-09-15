@@ -8,44 +8,44 @@ export const routes: Routes = [
     path: '',
     loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
     pathMatch: 'full',
-    title: 'AWS SAA Practice',
+    title: 'CloudCase Hub',
   },
   {
     path: 'practice',
     loadComponent: () => import('./features/practice/practice.component').then(m => m.PracticeComponent),
-    title: 'Practice — AWS SAA App',
+    title: 'Practice - CloudCase Hub',
   },
   {
     path: 'exam',
     loadComponent: () => import('./features/practice/practice.component').then(m => m.PracticeComponent),
-    title: 'Exam — AWS SAA App',
+    title: 'Exam - CloudCase Hub',
   },
   {
     path: 'practice/session',
     canDeactivate: [sessionLeaveGuard],
     loadComponent: () => import('./features/quiz-session/quiz-session.component').then(m => m.QuizSessionComponent),
-    title: 'Quiz Session — AWS SAA App',
+    title: 'Quiz Session - CloudCase Hub',
   },
   {
     path: 'exam/session',
     canDeactivate: [sessionLeaveGuard],
     loadComponent: () => import('./features/quiz-session/quiz-session.component').then(m => m.QuizSessionComponent),
-    title: 'Exam Session — AWS SAA App',
+    title: 'Exam Session - CloudCase Hub',
   },
   {
     path: 'services',
     loadComponent: () => import('./features/services/services.component').then(m => m.ServicesComponent),
-    title: 'Services — AWS SAA App',
+    title: 'Services - CloudCase Hub',
   },
   {
     path: 'results',
     loadComponent: () => import('./features/results/results.component').then(m => m.ResultsComponent),
-    title: 'Results — AWS SAA App',
+    title: 'Results - CloudCase Hub',
   },
   {
     path: 'review',
     loadComponent: () => import('./features/review/review.component').then(m => m.ReviewComponent),
-    title: 'Review — AWS SAA App',
+    title: 'Review - CloudCase Hub',
   },
   {
     path: 'icon-gallery',
@@ -53,7 +53,7 @@ export const routes: Routes = [
       import('./features/icon-gallery/icon-gallery.component').then(
         m => m.IconGalleryComponent
       ),
-    title: 'Icon Gallery — AWS SAA App',
+    title: 'Icon Gallery - CloudCase Hub',
   },
   {
     path: 'dev/icons',

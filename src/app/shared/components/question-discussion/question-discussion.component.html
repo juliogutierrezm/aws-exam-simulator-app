@@ -1,0 +1,41 @@
+<section class="discussion" aria-labelledby="discussion-title">
+  <header class="discussion-header">
+    <div>
+      <div class="title-row"><h2 id="discussion-title">Debate de la pregunta</h2><span class="preview-badge">Vista previa</span></div>
+      <p>Compara interpretaciones y analiza por qué una solución es más adecuada que las demás.</p>
+    </div>
+    <span class="participation-count">{{ participationCount() }} participaciones</span>
+  </header>
+
+  <div class="comments">
+    @for (comment of discussion().comments; track comment.id) {
+      <article class="comment" [class.team-comment]="comment.isTeamResponse">
+        <div class="comment-heading">
+          <span class="avatar" aria-hidden="true">{{ comment.authorInitials }}</span>
+          <div class="author"><strong>{{ comment.authorName }}</strong><span>{{ comment.authorRole }} · {{ comment.createdAtLabel }}</span></div>
+          @if (comment.isTeamResponse) { <span class="team-badge">Equipo CloudCase Hub</span> }
+        </div>
+        @if (comment.supportedOptionId) { <p class="supported-option">Defiende: <strong>{{ comment.supportedOptionId }}</strong></p> }
+        <p class="comment-content">{{ comment.content }}</p>
+        @if (comment.referenceUrl) { <a class="reference" [href]="comment.referenceUrl" target="_blank" rel="noopener noreferrer">Consultar documentación ↗</a> }
+        <div class="comment-actions"><span aria-label="Votos útiles">♧ {{ comment.helpfulCount }} útiles</span><button type="button" disabled>Responder</button><button type="button" disabled>Solicitar fuente</button></div>
+
+        @for (reply of comment.replies; track reply.id) {
+          <article class="reply">
+            <div class="comment-heading"><span class="avatar" aria-hidden="true">{{ reply.authorInitials }}</span><div class="author"><strong>{{ reply.authorName }}</strong><span>{{ reply.authorRole }} · {{ reply.createdAtLabel }}</span></div></div>
+            @if (reply.supportedOptionId) { <p class="supported-option">Defiende: <strong>{{ reply.supportedOptionId }}</strong></p> }
+            <p class="comment-content">{{ reply.content }}</p>
+            <div class="comment-actions"><span aria-label="Votos útiles">♧ {{ reply.helpfulCount }} útiles</span><button type="button" disabled>Responder</button></div>
+          </article>
+        }
+      </article>
+    }
+  </div>
+
+  <form class="composer" (submit)="$event.preventDefault()">
+    <label for="discussion-draft">Comparte tu razonamiento...</label>
+    <textarea id="discussion-draft" rows="4" placeholder="Comparte tu razonamiento..." aria-describedby="discussion-draft-status"></textarea>
+    <div class="composer-footer"><select aria-label="Opción defendida"><option>Selecciona una opción</option></select><button type="submit" disabled>Publicar</button></div>
+    <p id="discussion-draft-status">Disponible próximamente. Las participaciones no se almacenan todavía.</p>
+  </form>
+</section>

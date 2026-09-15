@@ -5,7 +5,7 @@ Angular-based study tool for the **AWS Certified Solutions Architect – Associa
 ## Purpose
 
 Practice AWS SAA questions, simulate timed exams, review mistakes, and explore AWS service icons
-across 455 questions spanning 7 practice exams.
+across 455 questions spanning 8 practice exams.
 
 Fase 1 funciona completamente en frontend, sin backend, autenticación ni sincronización cloud.
 
@@ -39,7 +39,7 @@ npm run dev
 ```
 
 This command:
-1. Validates `data/` (455 questions, structure checks)
+1. Validates `data/` (520 questions, structure checks)
 2. Audits `resources/aws-icons/` (302 SVGs)
 3. Builds the icon manifest (`public/data/aws-icon-manifest.json`)
 4. Generates an optimized runtime dataset and syncs data → `public/data/`
@@ -113,7 +113,7 @@ the IDs, responses, classification, configuration, timestamps, duration, and dat
 aws-saa-app/
 ├── .agents/                  # Kiro agent configuration
 ├── data/                     # ★ Canonical dataset (DO NOT EDIT manually)
-│   ├── questions.json        #   455 exam questions (v2.3, frozen)
+│   ├── questions.json        #   520 exam questions (v2.3, frozen)
 │   ├── services.json         #   75 AWS services with icon_keys
 │   ├── concepts.json         #   61 architecture concepts
 │   └── domains.json          #   4 exam domains

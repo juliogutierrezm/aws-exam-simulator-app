@@ -16,6 +16,11 @@ describe('LocalProgressService', () => {
     expect(service.getTheme()).toBe('dark');
   });
 
+  it('migrates legacy system theme settings to light', () => {
+    localStorage.setItem('aws-saa-app:v1:settings', JSON.stringify({ theme: 'system' }));
+    expect(service.getTheme()).toBe('light');
+  });
+
   it('keeps complete results for deterministic review', () => {
     const result = { resultId: 'r1', sessionId: 's1', datasetVersion: '2.3', mode: 'practice',
       questionIds: ['q1'], responses: { q1: { questionId: 'q1', selectedAnswerIds: [], classification: 'unanswered' } },

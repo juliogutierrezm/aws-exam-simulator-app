@@ -6,8 +6,10 @@ import { QuizSessionService } from '../../core/services/quiz-session.service';
 import { ExamTimingMode, QuizConfig } from '../../core/models/quiz.model';
 import { describeSource } from '../../core/models/quiz-result';
 import { SessionActionsService } from '../../core/services/session-actions.service';
+import { QuizGeneratorService } from '../../core/services/quiz-generator.service';
 import { FormsModule } from '@angular/forms';
 import { AwsServiceIconComponent } from '../../shared/components/aws-service-icon/aws-service-icon.component';
+import { SelectCountFilter } from '../../core/models/quiz.model';
 
 export function getValidCountOptions(available: number, isExam: boolean): number[] {
   if (available <= 2) return Array.from({ length: available }, (_, index) => index + 1);
@@ -33,6 +35,7 @@ export class PracticeComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly session = inject(QuizSessionService);
   private readonly actions = inject(SessionActionsService);
+  private readonly generator = inject(QuizGeneratorService);
   readonly questions = toSignal(this.data.getQuestions(), { initialValue: [] });
   readonly services = toSignal(this.data.getServices(), { initialValue: [] });
   readonly domains = toSignal(this.data.getDomains(), { initialValue: [] });
@@ -46,11 +49,18 @@ export class PracticeComponent {
   ];
   readonly serviceId = signal(this.serviceFromUrl);
   readonly domainId = signal('');
+  readonly selectedSelectCount = signal<SelectCountFilter | null>(null);
+  readonly selectCountOptions: Array<{ value: SelectCountFilter | null; label: string }> = [
+    { value: null, label: 'Todas' },
+    { value: 1, label: 'Única' },
+    { value: 2, label: 'Múltiple (2)' },
+    { value: 3, label: 'Múltiple (3)' },
+  ];
   readonly timingMode = signal<ExamTimingMode>('stopwatch');
   readonly starting = signal(false);
   readonly startError = signal<string | null>(null);
   readonly restoreMessage = signal(typeof window !== 'undefined' ? window.history.state?.message ?? null : null);
-  readonly availableCount = computed(() => this.questions().filter((question) => this.isExam ? this.examSource() === 'random' || question.exam_id === this.examSource() : (!this.serviceId() || question.metadata?.primary_services?.includes(this.serviceId())) && (!this.domainId() || question.exam_domain === this.domainId())).length);
+  readonly availableCount = computed(() => this.generator.getAvailableQuestions(this.questions(), this.buildConfig()).length);
   readonly selectedService = computed(() => this.services().find(service => service.id === this.serviceId()) ?? null);
   readonly validCountOptions = computed(() => {
     return this.isExam ? [65] : getValidCountOptions(this.availableCount(), false);
@@ -70,7 +80,7 @@ export class PracticeComponent {
     try {
       if (!await this.actions.beforeStart()) return;
       const count = this.isExam ? 65 : (this.effectiveCount() === 0 ? this.availableCount() : this.effectiveCount());
-      const config: QuizConfig = { mode: this.isExam ? 'exam' : 'practice', questionCount: count, serviceId: this.isExam ? undefined : (this.serviceId() || undefined), domainId: this.isExam ? undefined : (this.domainId() || undefined), examId: this.isExam && this.examSource() !== 'random' ? this.examSource() : undefined, timingMode: this.isExam ? this.timingMode() : 'untimed', durationMinutes: this.isExam && this.timingMode() === 'countdown' ? 130 : undefined };
+      const config: QuizConfig = { ...this.buildConfig(), questionCount: count };
       config.source = describeSource(config, { service: this.selectedService()?.name, domain: this.domains().find(d => d.id === this.domainId())?.name });
       this.session.create(this.questions(), config);
       await this.router.navigate([this.isExam ? '/exam/session' : '/practice/session']);
@@ -80,6 +90,19 @@ export class PracticeComponent {
     } finally {
       this.starting.set(false);
     }
+  }
+
+  private buildConfig(): QuizConfig {
+    return {
+      mode: this.isExam ? 'exam' : 'practice',
+      questionCount: 1,
+      serviceId: this.isExam ? undefined : (this.serviceId() || undefined),
+      domainId: this.isExam ? undefined : (this.domainId() || undefined),
+      examId: this.isExam && this.examSource() !== 'random' ? this.examSource() : undefined,
+      selectCount: this.isExam ? null : this.selectedSelectCount(),
+      timingMode: this.isExam ? this.timingMode() : 'untimed',
+      durationMinutes: this.isExam && this.timingMode() === 'countdown' ? 130 : undefined,
+    };
   }
 
 }

@@ -1,3 +1,3 @@
-const project: number = 123;
+const projectName: string = "AWS SAA Backend";
 
-console.log(project);
+console.log(projectName);

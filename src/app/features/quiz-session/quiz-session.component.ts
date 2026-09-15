@@ -7,9 +7,12 @@ import { ExamTimerService } from '../../core/services/exam-timer.service';
 import { AwsService } from '../../core/models/aws-service.model';
 import { AwsServiceIconComponent } from '../../shared/components/aws-service-icon/aws-service-icon.component';
 import { SessionActionsService } from '../../core/services/session-actions.service';
+import { appFeatures } from '../../core/config/app-features.config';
+import { QuestionDiscussionComponent } from '../../shared/components/question-discussion/question-discussion.component';
 
-@Component({ selector: 'app-quiz-session', standalone: true, imports: [AwsServiceIconComponent], templateUrl: './quiz-session.component.html', styleUrl: './quiz-session.component.scss', changeDetection: ChangeDetectionStrategy.OnPush })
+@Component({ selector: 'app-quiz-session', standalone: true, imports: [AwsServiceIconComponent, QuestionDiscussionComponent], templateUrl: './quiz-session.component.html', styleUrl: './quiz-session.component.scss', changeDetection: ChangeDetectionStrategy.OnPush })
 export class QuizSessionComponent {
+  readonly questionDiscussionsEnabled = appFeatures.questionDiscussions;
   private readonly data = inject(DataService);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);

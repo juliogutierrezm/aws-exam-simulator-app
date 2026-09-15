@@ -38,6 +38,7 @@
           <strong>{{ session()?.answers?.[current.id]?.classification === 'correct' ? '✓ Respuesta correcta' : '✕ Respuesta incorrecta' }}</strong><p>{{ feedback.summary }}</p><p><b>Pista</b><br>{{ feedback.key_clue }}</p><p><b>Por qué las demás no son adecuadas</b><br>{{ feedback.incorrect_options }}</p>@for (reference of current.references || []; track reference) { <a [href]="reference" target="_blank" rel="noopener noreferrer">Referencia AWS ↗</a> }
         </aside>
       }
+      @if (checked() && hasImmediateFeedback() && questionDiscussionsEnabled) { <app-question-discussion [questionId]="current.id" /> }
       <div class="session-actions">
         @if (isExam() && quiz.currentIndex() > 0) { <button class="secondary" type="button" (click)="previous()">← Anterior</button> }
         @if (hasImmediateFeedback() && !checked()) { <button class="primary" type="button" [disabled]="!canCheck()" (click)="check()">Comprobar respuesta</button> }

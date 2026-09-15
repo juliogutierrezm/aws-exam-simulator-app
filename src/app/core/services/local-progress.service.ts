@@ -12,7 +12,7 @@ interface ProgressState {
 }
 
 interface SettingsState {
-  theme: ThemePreference;
+  theme?: unknown;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -50,7 +50,8 @@ export class LocalProgressService {
   }
 
   getTheme(): ThemePreference {
-    return this.read<SettingsState>(SETTINGS_KEY)?.theme ?? 'system';
+    const theme = this.read<SettingsState>(SETTINGS_KEY)?.theme;
+    return theme === 'dark' || theme === 'light' ? theme : 'light';
   }
 
   saveTheme(theme: ThemePreference): void {

@@ -1,0 +1,239 @@
+:host {
+  display: block;
+}
+
+.discussion {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  color: var(--saa-text);
+  background: var(--saa-surface-raised);
+  border: 1px solid var(--saa-border);
+  border-top: 3px solid var(--brand-accent);
+}
+
+.discussion-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--saa-border);
+}
+
+.title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.discussion h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.discussion-header p {
+  max-width: 58ch;
+  margin: 0.35rem 0 0;
+  color: var(--saa-text-secondary);
+}
+
+.preview-badge,
+.team-badge {
+  display: inline-flex;
+  padding: 0.2rem 0.5rem;
+  color: var(--saa-warning);
+  background: color-mix(in srgb, var(--saa-warning) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--saa-warning) 50%, transparent);
+  border-radius: 3px;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.participation-count {
+  flex: none;
+  color: var(--saa-text-secondary);
+  font-size: 0.85rem;
+}
+
+.comments {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.comment {
+  padding: 1rem;
+  border: 1px solid var(--saa-border);
+}
+
+.team-comment {
+  border-left: 4px solid var(--brand-interactive);
+  background: var(--saa-surface-alt);
+}
+
+.comment-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--brand-on-primary);
+  background: var(--brand-primary);
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.author {
+  display: grid;
+  min-width: 0;
+}
+
+.author span {
+  color: var(--saa-text-secondary);
+  font-size: 0.8rem;
+}
+
+.team-badge {
+  margin-left: auto;
+  color: var(--brand-interactive);
+  background: transparent;
+  border-color: var(--brand-interactive);
+}
+
+.supported-option {
+  margin: 0.8rem 0 0.35rem;
+  color: var(--saa-text-secondary);
+  font-size: 0.85rem;
+}
+
+.comment-content {
+  margin: 0.65rem 0;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+
+.reference {
+  color: var(--brand-interactive);
+  font-size: 0.85rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.comment-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  color: var(--saa-text-secondary);
+  font-size: 0.8rem;
+}
+
+.comment-actions button {
+  padding: 0.3rem 0.5rem;
+  color: var(--saa-text-secondary);
+  background: transparent;
+  border: 0;
+  font: inherit;
+}
+
+.reply {
+  margin: 1rem 0 0 2.75rem;
+  padding: 1rem 0 0 1rem;
+  border-top: 1px solid var(--saa-border);
+  border-left: 2px solid var(--saa-border);
+}
+
+.composer {
+  display: grid;
+  gap: 0.65rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--saa-border);
+}
+
+.composer label {
+  font-weight: 700;
+}
+
+.composer textarea,
+.composer select {
+  width: 100%;
+  padding: 0.7rem;
+  color: var(--saa-text);
+  background: var(--saa-surface);
+  border: 1px solid var(--saa-border);
+  border-radius: 3px;
+  font: inherit;
+}
+
+.composer textarea:focus-visible,
+.composer select:focus-visible {
+  outline: 3px solid var(--saa-focus);
+  outline-offset: 2px;
+}
+
+.composer-footer {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.composer-footer select {
+  flex: 1;
+}
+
+.composer button {
+  padding: 0.7rem 1rem;
+  color: var(--brand-on-primary);
+  background: var(--brand-interactive);
+  border: 0;
+  border-radius: 3px;
+  font: inherit;
+  font-weight: 700;
+}
+
+.composer button:disabled,
+.comment-actions button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.composer p {
+  margin: 0;
+  color: var(--saa-text-secondary);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .discussion {
+    padding: 1rem;
+  }
+
+  .discussion-header {
+    display: grid;
+  }
+
+  .participation-count {
+    justify-self: start;
+  }
+
+  .team-badge {
+    margin-left: 0;
+  }
+
+  .reply {
+    margin-left: 0.75rem;
+    padding-left: 0.65rem;
+  }
+
+  .composer-footer {
+    flex-direction: column;
+  }
+}
+

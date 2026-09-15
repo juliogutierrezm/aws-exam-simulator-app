@@ -4,13 +4,10 @@ import { LocalProgressService } from './local-progress.service';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
-  readonly preference = signal<ThemePreference>('system');
-
-  private readonly mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  readonly preference = signal<ThemePreference>('light');
 
   constructor(private readonly progress: LocalProgressService) {
     this.preference.set(this.progress.getTheme());
-    this.mediaQuery.addEventListener('change', () => this.apply());
     this.apply();
   }
 
@@ -21,8 +18,7 @@ export class ThemeService {
   }
 
   isDark(): boolean {
-    return this.preference() === 'dark' ||
-      (this.preference() === 'system' && this.mediaQuery.matches);
+    return this.preference() === 'dark';
   }
 
   private apply(): void {

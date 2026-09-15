@@ -23,8 +23,8 @@ describe('ThemeService', () => {
     expect(document.documentElement.classList.contains('dark-mode')).toBeTrue();
   });
 
-  it('supports system preference', () => {
-    service.setPreference('system');
-    expect(service.preference()).toBe('system');
+  it('keeps light as the default preference', () => {
+    expect(service.preference()).toBe('light');
+    expect(document.documentElement.classList.contains('dark-mode')).toBeFalse();
   });
 });
