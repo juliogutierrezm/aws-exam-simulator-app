@@ -1,0 +1,13 @@
+{
+  "catalog_version": "1.0.0",
+  "schema_version": "2.0",
+  "certification": "SAA-C03",
+  "question_count": 520,
+  "exam_count": 8,
+  "files": {
+    "questions": "questions.json",
+    "domains": "domains.json",
+    "services": "services.json",
+    "concepts": "concepts.json"
+  }
+}

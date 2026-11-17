@@ -7,7 +7,7 @@ const { readFileSync, mkdirSync, copyFileSync, writeFileSync } = require('fs');
 const { join } = require('path');
 
 const ROOT = join(__dirname, '..');
-const FILES = ['questions.json', 'services.json', 'concepts.json', 'domains.json'];
+const FILES = ['questions.json', 'services.json', 'concepts.json', 'domains.json', 'catalog.json'];
 
 mkdirSync(join(ROOT, 'public/data'), { recursive: true });
 

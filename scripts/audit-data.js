@@ -3,8 +3,8 @@
 // Validates the canonical dataset files and generates docs/audits/dataset-validation-summary.json
 'use strict';
 
-const { readFileSync, writeFileSync, mkdirSync } = require('fs');
-const { join } = require('path');
+const { readFileSync, writeFileSync, mkdirSync, existsSync } = require('fs');
+const { join, resolve, relative, isAbsolute } = require('path');
 
 const ROOT = join(__dirname, '..');
 
@@ -21,6 +21,50 @@ function readJSON(relPath) {
 const errors = [];
 const warnings = [];
 const info = [];
+
+// ── catalog.json ─────────────────────────────────────────────────────────────
+const catalogPath = 'data/catalog.json';
+const catalogExists = existsSync(join(ROOT, catalogPath));
+const catalogResult = catalogExists
+  ? readJSON(catalogPath)
+  : { ok: false, data: null, error: 'file not found' };
+let catalog = null;
+
+if (!catalogExists) {
+  errors.push(`catalog.json: file not found`);
+} else if (!catalogResult.ok) {
+  errors.push(`catalog.json: invalid JSON — ${catalogResult.error}`);
+} else if (!catalogResult.data || typeof catalogResult.data !== 'object' || Array.isArray(catalogResult.data)) {
+  errors.push(`catalog.json: root must be a JSON object`);
+} else {
+  info.push(`catalog.json: valid JSON`);
+
+  catalog = catalogResult.data;
+  for (const field of ['catalog_version', 'schema_version', 'certification']) {
+    if (catalog[field] == null) {
+      errors.push(`catalog.json: missing field '${field}'`);
+    }
+  }
+
+  if (!catalog.files || typeof catalog.files !== 'object' || Array.isArray(catalog.files)) {
+    errors.push(`catalog.json: missing or invalid field 'files'`);
+  } else {
+    const dataDir = resolve(ROOT, 'data');
+    for (const [name, file] of Object.entries(catalog.files)) {
+      if (typeof file !== 'string' || file.length === 0) {
+        errors.push(`catalog.json: files.${name} must be a non-empty string`);
+        continue;
+      }
+      const filePath = resolve(dataDir, file);
+      const relativePath = relative(dataDir, filePath);
+      if (relativePath.startsWith('..') || isAbsolute(relativePath)) {
+        errors.push(`catalog.json: files.${name} points outside data/: ${file}`);
+      } else if (!existsSync(filePath)) {
+        errors.push(`catalog.json: files.${name} not found in data/: ${file}`);
+      }
+    }
+  }
+}
 
 // ── questions.json ────────────────────────────────────────────────────────────
 const qResult = readJSON('data/questions.json');
@@ -74,6 +118,20 @@ if (!qResult.ok) {
     );
   } else {
     info.push(`questions.json: all ${examCounts.length} exams have exactly 65 questions ✓`);
+  }
+
+  if (catalog) {
+    if (catalog.question_count !== questions.length) {
+      errors.push(`catalog.json: question_count=${catalog.question_count} but questions.json has ${questions.length} questions`);
+    } else {
+      info.push(`catalog.json: question_count matches questions.json ✓`);
+    }
+
+    if (catalog.exam_count !== examCounts.length) {
+      errors.push(`catalog.json: exam_count=${catalog.exam_count} but questions.json has ${examCounts.length} unique exam_id values`);
+    } else {
+      info.push(`catalog.json: exam_count matches questions.json ✓`);
+    }
   }
 
   // select_count consistency — dataset v2.3 stores answers in source_correct_answers
