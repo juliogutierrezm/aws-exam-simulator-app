@@ -1,5 +1,5 @@
 import { PutCommand } from "@aws-sdk/lib-dynamodb";
-import { documentClient } from "../../infrastructure/dynamodb/client.js";
+import { documentClient, tableName } from "../../infrastructure/dynamodb/client.js";
 
 type CreateAttemptInput = {
   attemptId: string;
@@ -13,7 +13,7 @@ export const createAttempt = async (
   input: CreateAttemptInput
 ): Promise<void> => {
   const command = new PutCommand({
-    TableName: "cloudcase-hub-dev-user-data",
+    TableName: tableName,
 
     Item: {
       PK: `ATTEMPT#${input.attemptId}`,

@@ -1,5 +1,5 @@
 resource "aws_dynamodb_table" "user_data" {
-  name         = "cloudcase-hub-dev-user-data"
+  name         = "${var.project_name}-${var.environment}-user-data"
   billing_mode = "PAY_PER_REQUEST"
 
   hash_key  = "PK"

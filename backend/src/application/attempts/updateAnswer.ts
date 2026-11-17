@@ -1,5 +1,5 @@
 import { UpdateCommand } from "@aws-sdk/lib-dynamodb";
-import { documentClient } from "../../infrastructure/dynamodb/client.js";
+import { documentClient, tableName } from "../../infrastructure/dynamodb/client.js";
 
 type UpdateAnswerInput = {
   attemptId: string;
@@ -13,7 +13,7 @@ export const updateAnswer = async (
   input: UpdateAnswerInput
 ): Promise<void> => {
   const command = new UpdateCommand({
-    TableName: "cloudcase-hub-dev-user-data",
+    TableName: tableName,
 
     Key: {
       PK: `ATTEMPT#${input.attemptId}`,

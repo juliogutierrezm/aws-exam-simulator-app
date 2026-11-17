@@ -47,3 +47,27 @@ await build({
   outdir: "dist/attempts/updateAnswer",
   sourcemap: true
 });
+
+await build({
+  entryPoints: {
+    handler: "src/functions/attempts/complete/handler.ts"
+  },
+  bundle: true,
+  platform: "node",
+  target: "node24",
+  format: "cjs",
+  outdir: "dist/attempts/complete",
+  sourcemap: true
+});
+
+await build({
+  entryPoints: {
+    handler: "src/functions/attempts/getUserAttempts/handler.ts"
+  },
+  bundle: true,
+  platform: "node",
+  target: "node24",
+  format: "cjs",
+  outdir: "dist/attempts/getUserAttempts",
+  sourcemap: true
+});

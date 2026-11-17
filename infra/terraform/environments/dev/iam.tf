@@ -1,5 +1,5 @@
 resource "aws_iam_role" "health_lambda" {
-  name = "cloudcase-hub-dev-health-lambda-role"
+  name = "${var.project_name}-${var.environment}-health-lambda-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"

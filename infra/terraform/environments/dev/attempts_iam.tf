@@ -1,5 +1,5 @@
 resource "aws_iam_role" "attempts_lambda" {
-  name = "cloudcase-hub-dev-attempts-lambda-role"
+  name = "${var.project_name}-${var.environment}-attempts-lambda-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
@@ -24,7 +24,7 @@ resource "aws_iam_role_policy_attachment" "attempts_lambda_basic_execution" {
 }
 
 resource "aws_iam_role_policy" "attempts_dynamodb" {
-  name = "cloudcase-hub-dev-attempts-dynamodb"
+  name = "${var.project_name}-${var.environment}-attempts-dynamodb"
   role = aws_iam_role.attempts_lambda.id
 
   policy = jsonencode({

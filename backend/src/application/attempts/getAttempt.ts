@@ -1,9 +1,9 @@
 import { QueryCommand } from "@aws-sdk/lib-dynamodb";
-import { documentClient } from "../../infrastructure/dynamodb/client.js";
+import { documentClient, tableName } from "../../infrastructure/dynamodb/client.js";
 
 export const getAttempt = async (attemptId: string) => {
   const command = new QueryCommand({
-    TableName: "cloudcase-hub-dev-user-data",
+    TableName: tableName,
 
     KeyConditionExpression: "PK = :pk",
 
