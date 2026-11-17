@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-15T02:43:31.579Z",
+  "generated_at": "2026-11-17T02:10:54.598Z",
   "passed": true,
   "total_questions": 520,
   "total_errors": 0,
@@ -7,11 +7,14 @@
   "errors": [],
   "warnings": [],
   "info": [
+    "catalog.json: valid JSON",
     "questions.json: valid JSON",
     "questions.json: 520 questions ✓",
     "questions.json: all IDs unique ✓",
     "questions.json: bank_index 1–520 continuous and unique ✓",
     "questions.json: all 8 exams have exactly 65 questions ✓",
+    "catalog.json: question_count matches questions.json ✓",
+    "catalog.json: exam_count matches questions.json ✓",
     "questions.json: all select_count values consistent with answers ✓",
     "questions.json: all required fields present ✓",
     "services.json: valid JSON, 75 services ✓",
