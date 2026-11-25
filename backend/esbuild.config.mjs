@@ -71,3 +71,54 @@ await build({
   outdir: "dist/attempts/getUserAttempts",
   sourcemap: true
 });
+
+await build({
+  entryPoints: {
+    handler: "src/functions/content/queryQuestions/handler.ts"
+  },
+  bundle: true,
+  platform: "node",
+  target: "node24",
+  format: "cjs",
+  outdir: "dist/content/queryQuestions",
+  sourcemap: true
+});
+
+await build({
+  entryPoints: {
+    handler:
+      "src/functions/attempts/getResult/handler.ts"
+  },
+  bundle: true,
+  platform: "node",
+  target: "node24",
+  format: "cjs",
+  outdir: "dist/attempts/getResult",
+  sourcemap: true
+});
+
+await build({
+  entryPoints: {
+    handler:
+      "src/functions/attempts/getQuestions/handler.ts"
+  },
+  bundle: true,
+  platform: "node",
+  target: "node24",
+  format: "cjs",
+  outdir: "dist/attempts/getQuestions",
+  sourcemap: true
+});
+
+await build({
+  entryPoints: {
+    handler:
+    "src/functions/attempts/getStatistics/handler.ts",
+  },
+  bundle: true,
+  platform: "node",
+  target: "node24",
+  format: "cjs",
+  outdir: "dist/attempts/getStatistics",
+  sourcemap: true
+});

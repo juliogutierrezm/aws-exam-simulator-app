@@ -68,8 +68,21 @@ terraform.rc
 # ==============================
 # AWS / deployment artifacts
 # ==============================
-infra/terraform/environments/*/*-lambda.zip
-infra/terraform/environments/*/response*.json
+
+# Generated Lambda deployment packages
+/infra/terraform/artifacts/**/*
+!/infra/terraform/artifacts/**/
+!/infra/terraform/artifacts/**/.gitkeep
+
+# Prevent generated files in Terraform environments
+/infra/terraform/environments/*/*-lambda.zip
+/infra/terraform/environments/*/response*.json
+
+# ==============================
+# API test responses
+# ==============================
+/tests/api/responses/*
+!/tests/api/responses/.gitkeep
 
 # ==============================
 # Testing / coverage
@@ -124,6 +137,7 @@ desktop.ini
 # docs/
 # scripts/
 # public/
+# tests/ (except temporary test responses)
 # .agents/
 # .github/
 # skills-lock.json

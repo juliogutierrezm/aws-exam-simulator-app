@@ -1,9 +1,24 @@
 import { UpdateCommand } from "@aws-sdk/lib-dynamodb";
-import { documentClient, tableName } from "../../infrastructure/dynamodb/client.js";
+
+import {
+  documentClient,
+  tableName
+} from "../../infrastructure/dynamodb/client.js";
 
 type CompleteAttemptInput = {
   attemptId: string;
+  userId: string;
+
+  expectedAnswerRevision: number;
+
   score: number;
+
+  correctCount: number;
+  incorrectCount: number;
+  unansweredCount: number;
+  totalQuestions: number;
+
+  durationSeconds: number;
   completedAt: string;
 };
 
@@ -18,17 +33,55 @@ export const completeAttempt = async (
       SK: "META"
     },
 
-    UpdateExpression:
-      "SET #status = :status, completedAt = :completedAt, score = :score",
+    UpdateExpression: [
+      "SET #status = :completed",
+      "completedAt = :completedAt",
+      "score = :score",
+      "correctCount = :correctCount",
+      "incorrectCount = :incorrectCount",
+      "unansweredCount = :unansweredCount",
+      "totalQuestions = :totalQuestions",
+      "durationSeconds = :durationSeconds"
+    ].join(", "),
+
+    ConditionExpression: [
+      "attribute_exists(PK)",
+      "userId = :userId",
+      "#status = :inProgress",
+      "(" +
+        "answerRevision = :expectedRevision" +
+        " OR " +
+        "(" +
+          "attribute_not_exists(answerRevision)" +
+          " AND :expectedRevision = :zero" +
+        ")" +
+      ")"
+    ].join(" AND "),
 
     ExpressionAttributeNames: {
       "#status": "status"
     },
 
     ExpressionAttributeValues: {
-      ":status": "COMPLETED",
+      ":userId": input.userId,
+
+      ":inProgress": "IN_PROGRESS",
+      ":completed": "COMPLETED",
+
+      ":expectedRevision":
+        input.expectedAnswerRevision,
+
+      ":zero": 0,
+
       ":completedAt": input.completedAt,
-      ":score": input.score
+      ":score": input.score,
+
+      ":correctCount": input.correctCount,
+      ":incorrectCount": input.incorrectCount,
+      ":unansweredCount": input.unansweredCount,
+      ":totalQuestions": input.totalQuestions,
+
+      ":durationSeconds": input.durationSeconds
     }
   });
 

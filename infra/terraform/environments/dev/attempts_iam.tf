@@ -49,3 +49,29 @@ resource "aws_iam_role_policy" "attempts_dynamodb" {
     ]
   })
 }
+
+resource "aws_iam_role_policy" "attempts_content_read" {
+  name = "${var.project_name}-${var.environment}-attempts-content-read"
+  role = aws_iam_role.attempts_lambda.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+
+    Statement = [
+      {
+        Effect = "Allow"
+
+        Action = [
+          "dynamodb:Query",
+          "dynamodb:GetItem",
+          "dynamodb:BatchGetItem"
+        ]
+
+        Resource = [
+          aws_dynamodb_table.content.arn,
+          "${aws_dynamodb_table.content.arn}/index/*"
+        ]
+      }
+    ]
+  })
+}

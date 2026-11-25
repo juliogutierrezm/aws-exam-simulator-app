@@ -193,3 +193,69 @@ resource "aws_lambda_permission" "api_gateway_get_user_attempts" {
 
   source_arn = "${aws_apigatewayv2_api.main.execution_arn}/*/GET/users/me/attempts"
 }
+
+# ============================================================
+# GET /questions
+# ============================================================
+
+resource "aws_apigatewayv2_integration" "query_questions" {
+  api_id = aws_apigatewayv2_api.main.id
+
+  integration_type   = "AWS_PROXY"
+  integration_uri    = aws_lambda_function.query_questions.invoke_arn
+  integration_method = "POST"
+
+  payload_format_version = "2.0"
+}
+
+resource "aws_apigatewayv2_route" "query_questions" {
+  api_id = aws_apigatewayv2_api.main.id
+
+  route_key = "GET /questions"
+  target    = "integrations/${aws_apigatewayv2_integration.query_questions.id}"
+
+  authorization_type = "JWT"
+  authorizer_id      = aws_apigatewayv2_authorizer.cognito.id
+}
+
+resource "aws_lambda_permission" "api_gateway_query_questions" {
+  statement_id  = "AllowApiGatewayQueryQuestions"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.query_questions.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.main.execution_arn}/*/GET/questions"
+}
+
+# ============================================================
+# GET /attempts/{attemptId}/result
+# ============================================================
+
+resource "aws_apigatewayv2_integration" "get_result" {
+  api_id = aws_apigatewayv2_api.main.id
+
+  integration_type   = "AWS_PROXY"
+  integration_uri    = aws_lambda_function.get_result.invoke_arn
+  integration_method = "POST"
+
+  payload_format_version = "2.0"
+}
+
+resource "aws_apigatewayv2_route" "get_result" {
+  api_id = aws_apigatewayv2_api.main.id
+
+  route_key = "GET /attempts/{attemptId}/result"
+  target    = "integrations/${aws_apigatewayv2_integration.get_result.id}"
+
+  authorization_type = "JWT"
+  authorizer_id      = aws_apigatewayv2_authorizer.cognito.id
+}
+
+resource "aws_lambda_permission" "api_gateway_get_result" {
+  statement_id  = "AllowApiGatewayGetResult"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.get_result.function_name
+  principal     = "apigateway.amazonaws.com"
+
+  source_arn = "${aws_apigatewayv2_api.main.execution_arn}/*/GET/attempts/*/result"
+}
